@@ -4,27 +4,27 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by thechucklingatom on 11/4/16.
+ *
+ * @author thechucklingatom
  */
-public class DataContainer {
+class DataContainer {
 
 	private List<List<String>> data;
 	private List<String> classification;
 
 	DataContainer(){
-		data = new ArrayList<List<String>>();
-		classification = new ArrayList<String>();
+		data = new ArrayList<>();
+		classification = new ArrayList<>();
 	}
 
 	void populateData(String filePath, int classificationLocation){
-		ArrayList<String> rows = new ArrayList<String>();
+		ArrayList<String> rows = new ArrayList<>();
 		FileReader fileReader = null;
 		try {
 			fileReader = new FileReader(filePath);
@@ -35,7 +35,7 @@ public class DataContainer {
 		}
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-		String line = null;
+		String line;
 
 		try {
 			while((line = bufferedReader.readLine()) != null){
@@ -53,7 +53,7 @@ public class DataContainer {
 			row = row.replace("\n", "").replace("\r", "");
 			String[] columns = row.split(",");
 
-			ArrayList<String> toPutInData = new ArrayList<String>();
+			ArrayList<String> toPutInData = new ArrayList<>();
 
 			for(int i = 0; i < columns.length; i++){
 				if(i == classificationLocation){
@@ -67,11 +67,11 @@ public class DataContainer {
 		}
 	}
 
-	public List<List<String>> getData() {
+	List<List<String>> getData() {
 		return data;
 	}
 
-	public List<String> getClassification() {
+	List<String> getClassification() {
 		return classification;
 	}
 }
