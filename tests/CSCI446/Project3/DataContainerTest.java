@@ -30,6 +30,9 @@ public class DataContainerTest {
 		assertTrue(data.contains(Arrays.asList(dataToFind)));
 
 		assertTrue(classification.get(data.indexOf(Arrays.asList(dataToFind))).equals("2"));
+
+		assertTrue(container.getClassTypes().size() == 2);
+
 	}
 
 

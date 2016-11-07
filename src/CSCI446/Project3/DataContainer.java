@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by thechucklingatom on 11/4/16.
@@ -17,10 +18,12 @@ class DataContainer {
 
 	private List<List<String>> data;
 	private List<String> classification;
+	private List<String> classTypes;
 
 	DataContainer(){
 		data = new ArrayList<>();
 		classification = new ArrayList<>();
+		classTypes = new ArrayList<>();
 	}
 
 	void populateData(String filePath, int classificationLocation){
@@ -65,6 +68,12 @@ class DataContainer {
 
 			data.add(toPutInData);
 		}
+
+		fillUniqueClassList();
+	}
+
+	private void fillUniqueClassList() {
+		classTypes = classification.stream().distinct().collect(Collectors.toList());
 	}
 
 	List<List<String>> getData() {
@@ -73,5 +82,9 @@ class DataContainer {
 
 	List<String> getClassification() {
 		return classification;
+	}
+
+	List<String> getClassTypes() {
+		return classTypes;
 	}
 }
