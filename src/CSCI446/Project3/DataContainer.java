@@ -19,6 +19,8 @@ class DataContainer {
 	private List<List<String>> data;
 	private List<String> classification;
 	private List<String> classTypes;
+	private List<List<List<String>>> dataFold;
+	private List<List<String>> classificationFold;
 
 	DataContainer(){
 		data = new ArrayList<>();
@@ -70,10 +72,25 @@ class DataContainer {
 		}
 
 		fillUniqueClassList();
+		generateFolds();
 	}
 
 	private void fillUniqueClassList() {
 		classTypes = classification.stream().distinct().collect(Collectors.toList());
+	}
+
+	private void generateFolds(){
+		int sizeOfFolds = data.size() / 10;
+
+		dataFold = new ArrayList<>();
+		classificationFold = new ArrayList<>();
+
+		for(int i = 0; i < data.size(); i += sizeOfFolds){
+			dataFold.add(data.subList(i,
+					i + sizeOfFolds < data.size() ? i + sizeOfFolds : data.size()));
+			classificationFold.add(classification.subList(i,
+					i + sizeOfFolds < data.size() ? i + sizeOfFolds : data.size()));
+		}
 	}
 
 	List<List<String>> getData() {
@@ -86,5 +103,13 @@ class DataContainer {
 
 	List<String> getClassTypes() {
 		return classTypes;
+	}
+
+	public List<List<List<String>>> getDataFold() {
+		return dataFold;
+	}
+
+	public List<List<String>> getClassificationFold() {
+		return classificationFold;
 	}
 }

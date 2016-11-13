@@ -32,5 +32,47 @@ public class DataContainerTest {
 
 	}
 
+	@Test
+	public void testFold(){
+		DataContainer container = new DataContainer();
+
+		final String CANCER = "data" + File.separator + "breast-cancer-wisconsin.data.txt";
+
+		container.populateData(CANCER, 10);
+
+		List<List<String>> data = container.getData();
+
+		List<List<List<String>>> dataFolds = container.getDataFold();
+
+		boolean everyDataListContained = false;
+
+		for(List<String> dataRow : data){
+			for(List<List<String>> foldRow : dataFolds){
+				if(foldRow.contains(dataRow)){
+					everyDataListContained = true;
+					break;
+				}
+			}
+			assertTrue(everyDataListContained);
+			everyDataListContained = false;
+		}
+
+		List<String> classes = container.getClassification();
+
+		List<List<String>> classFolds = container.getClassificationFold();
+
+		boolean everyClassListContained = false;
+		for(String classRow : classes){
+			for(List<String> foldRow : classFolds){
+				if(foldRow.contains(classRow)){
+					everyDataListContained = true;
+					break;
+				}
+			}
+			assertTrue(everyDataListContained);
+			everyDataListContained = false;
+		}
+	}
+
 
 }
