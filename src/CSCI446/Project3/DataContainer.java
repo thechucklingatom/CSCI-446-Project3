@@ -80,7 +80,7 @@ class DataContainer {
 	}
 
 	private void generateFolds(){
-		int sizeOfFolds = data.size() / 10;
+		int sizeOfFolds = (int)Math.ceil(data.size() / 10.0);
 
 		dataFold = new ArrayList<>();
 		classificationFold = new ArrayList<>();

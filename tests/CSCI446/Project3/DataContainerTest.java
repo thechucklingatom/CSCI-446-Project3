@@ -46,6 +46,8 @@ public class DataContainerTest {
 
 		boolean everyDataListContained = false;
 
+		assertTrue(dataFolds.size() == 10);
+
 		for(List<String> dataRow : data){
 			for(List<List<String>> foldRow : dataFolds){
 				if(foldRow.contains(dataRow)){
@@ -60,6 +62,8 @@ public class DataContainerTest {
 		List<String> classes = container.getClassification();
 
 		List<List<String>> classFolds = container.getClassificationFold();
+
+		assertTrue(classFolds.size() == 10);
 
 		boolean everyClassListContained = false;
 		for(String classRow : classes){
