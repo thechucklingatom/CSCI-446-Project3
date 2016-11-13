@@ -69,12 +69,12 @@ public class DataContainerTest {
 		for(String classRow : classes){
 			for(List<String> foldRow : classFolds){
 				if(foldRow.contains(classRow)){
-					everyDataListContained = true;
+					everyClassListContained = true;
 					break;
 				}
 			}
-			assertTrue(everyDataListContained);
-			everyDataListContained = false;
+			assertTrue(everyClassListContained);
+			everyClassListContained = false;
 		}
 	}
 
