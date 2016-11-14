@@ -21,27 +21,3 @@ public class ID3 {
 
     }
 }
-
-class Tree {
-    private Node root;
-    private List<Node> children;
-
-    public Tree(){
-
-    }
-
-    public void addChild(Node addNode){
-        children.add(addNode);
-    }
-
-    public void removeChild(Node remNode){
-        children.remove(remNode);
-    }
-}
-
-class Node {
-    //some sort of information to hold
-    public Node(){
-
-    }
-}
