@@ -7,6 +7,9 @@ public class Main {
 
 	private static final String CANCER = "data" + File.separator + "breast-cancer-wisconsin.data.txt";
 	private static final String GLASS = "data" + File.separator + "glass.data.txt";
+	private static final String HOUSE = "data" + File.separator + "house-votes-84.data.txt";
+	private static final String IRIS = "data" + File.separator + "iris.data.txt";
+	private static final String SOYBEAN = "data" + File.separator + "soybean-small.data.txt";
 
 	public static void main(String[] args) {
 	// write your code here
