@@ -19,7 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 	// write your code here
 		DataContainer container = new DataContainer();
-		container.populateData(GLASS, GLASS_CLASS);
+		container.populateData(IRIS, IRIS_CLASS);
 
 		List<List<String>> data = container.getData();
 		List<String> classification = container.getClassification();
