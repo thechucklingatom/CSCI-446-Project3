@@ -1,6 +1,8 @@
 package CSCI446.Project3;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
@@ -27,6 +29,22 @@ public class Main {
 		data.forEach(System.out::println);
 
 		classification.forEach(System.out::println);
+
+		String outputFilePath = "runs" + File.separator + "knn.txt";
+
+		try{
+			FileWriter fileWriter = new FileWriter(outputFilePath);
+
+			kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
+
+			kNearestNeighbor.classify();
+
+			fileWriter.close();
+		} catch (IOException ex){
+			ex.printStackTrace();
+			System.out.println("could not find file");
+			System.exit(2);
+		}
 
 	}
 }

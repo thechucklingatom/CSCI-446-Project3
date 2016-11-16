@@ -1,5 +1,6 @@
 package CSCI446.Project3;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,12 +16,14 @@ import java.util.Random;
  * @author thechucklingatom
  */
 public class kNearestNeighbor {
+	private int foldToWrite;
 	private Writer fileOutput;
 	private DataContainer dataContainer;
 	private int currentFold;
 	private int testingFold;
 	private Map<String, Integer> classCounter;
 	private int k;
+	private int correct;
 
 	kNearestNeighbor(Writer writer, DataContainer dataContainer) {
 		fileOutput = writer;
@@ -29,6 +32,8 @@ public class kNearestNeighbor {
 		testingFold = 10;
 		classCounter = new HashMap<>();
 		k = (int)Math.ceil(dataContainer.getDataFold().get(0).size() * .1);
+		correct = 0;
+		foldToWrite = 0;
 	}
 
 	List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
@@ -44,6 +49,17 @@ public class kNearestNeighbor {
 	}
 
 	List<DistanceIndex> getNearestNeighbors(int index) {
+		if(foldToWrite == currentFold){
+			try {
+				fileOutput.append("Getting nearest neighbor for ");
+				fileOutput.append(dataContainer.getDataFold().get(currentFold).get(index).toString());
+				fileOutput.append("\n");
+			} catch (IOException ex){
+				ex.printStackTrace();
+				System.out.println("error printing in get Nearest Neighbor");
+			}
+		}
+
 		ArrayList<DistanceIndex> toReturn = new ArrayList<>();
 
 		List<List<String>> currentFoldList = dataContainer.getDataFold().get(currentFold);
@@ -55,6 +71,8 @@ public class kNearestNeighbor {
 			DistanceIndex temp = new DistanceIndex();
 			temp.distance = calculateDistance(currentFoldList.get(i), currentFoldList.get(index));
 			temp.index = i;
+
+			toReturn.add(temp);
 		}
 
 
@@ -62,7 +80,22 @@ public class kNearestNeighbor {
 	}
 
 	double calculateDistance(List<String> point1, List<String> point2) {
-		return 0;
+		double distance = 0;
+		for(int i = 0; i < point1.size() && i < point2.size(); i++){
+			//Euclidean Distance
+			try {
+				distance += Math.pow(
+						Double.valueOf(point1.get(i)) - Double.valueOf(point2.get(i)), 2);
+			} catch (NumberFormatException ex) {
+				distance += Math.pow(
+						(int)point1.get(i).charAt(0) - (int)point2.get(i).charAt(0), 2);
+			}
+
+		}
+
+		distance = Math.pow(distance, .5);
+
+		return distance;
 	}
 
 	String getClassification(List<String> possibleClasses) {
@@ -97,8 +130,13 @@ public class kNearestNeighbor {
 	void classify(){
 		for (int i = 0; i < dataContainer.getDataFold().size(); i++) {
 			for(int j = 0; j < dataContainer.getDataFold().get(i).size(); j++){
-				//// TODO: 11/14/2016 put classification logic here
+				String guess =
+						getClassification(getNearestNeighborsClassification(getNearestNeighbors(j)));
+				if(dataContainer.getClassificationFold().get(i).get(j).equals(guess)){
+					correct++;
+				}
 			}
+			correct = 0;
 		}
 	}
 }
