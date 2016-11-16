@@ -102,9 +102,15 @@ public class kNearestNeighbor {
 		double distance = 0;
 		for(int i = 0; i < point1.size() && i < point2.size(); i++){
 			//Euclidean Distance
+			String point1CurrentValue = point1.get(i);
+			String point2CurrentValue = point2.get(i);
+
+			point1CurrentValue = point1CurrentValue.equals("?") ? "0" : point1CurrentValue;
+			point2CurrentValue = point2CurrentValue.equals("?") ? "0" : point2CurrentValue;
+
 			try {
 				distance += Math.pow(
-						Double.valueOf(point1.get(i)) - Double.valueOf(point2.get(i)), 2);
+						Double.valueOf(point1CurrentValue) - Double.valueOf(point2CurrentValue), 2);
 			} catch (NumberFormatException ex) {
 				distance += Math.pow(
 						(int)point1.get(i).charAt(0) - (int)point2.get(i).charAt(0), 2);
