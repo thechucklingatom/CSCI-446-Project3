@@ -1,12 +1,1362 @@
-Getting nearest neighbor for [4, 0, 2, 1, 1, 1, 0, 1, 0, 2, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 1, 1, 1, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0]
-k nearest neighbors classes [D4, D4, D2]
-Calculating highest probable class{D4=2, D2=1}
-Guessing D4
-Guess :D4
-Correct Class: D1
+Getting nearest neighbor for [1168359, 8, 2, 3, 1, 6, 3, 7, 1, 1]
+k nearest neighbors classes [4, 4, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
 Incorrect guess. Total number of correct guesses 0
 Total Guesses 1
 Percent guessed correctly: 0.0
+Getting nearest neighbor for [1205579, 8, 7, 6, 4, 4, 10, 5, 1, 1]
+k nearest neighbors classes [4, 4, 2, 2, 4, 4, 2]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 1
+Total Guesses 2
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [640744, 10, 10, 10, 7, 9, 10, 7, 10, 10]
+k nearest neighbors classes [4, 4, 2, 2, 4, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 1
+Total Guesses 3
+Percent guessed correctly: 0.3333333333333333
+Getting nearest neighbor for [1212251, 1, 1, 1, 1, 2, 1, 3, 1, 1]
+k nearest neighbors classes [2, 4, 4, 4, 4, 2, 4]
+Calculating highest probable class{2=2, 4=5}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 1
+Total Guesses 4
+Percent guessed correctly: 0.25
+Getting nearest neighbor for [13454352, 1, 1, 3, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 2, 2]
+Calculating highest probable class{2=7}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 2
+Total Guesses 5
+Percent guessed correctly: 0.4
+Getting nearest neighbor for [749653, 3, 1, 1, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 3
+Total Guesses 6
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1022257, 2, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 4, 4, 2, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 3
+Total Guesses 7
+Percent guessed correctly: 0.42857142857142855
+Getting nearest neighbor for [1272166, 5, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 4, 2]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 4
+Total Guesses 8
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1165926, 9, 6, 9, 2, 10, 6, 2, 9, 10]
+k nearest neighbors classes [4, 4, 2, 2, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 4
+Total Guesses 9
+Percent guessed correctly: 0.4444444444444444
+Getting nearest neighbor for [474162, 8, 7, 8, 5, 5, 10, 9, 10, 1]
+k nearest neighbors classes [2, 2, 2, 4, 4, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 5
+Total Guesses 10
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1295508, 1, 1, 1, 1, 2, 4, 1, 1, 1]
+k nearest neighbors classes [4, 2, 4, 4, 2, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 6
+Total Guesses 11
+Percent guessed correctly: 0.5454545454545454
+Getting nearest neighbor for [1213273, 2, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 4, 4, 4, 2, 4, 4]
+Calculating highest probable class{2=2, 4=5}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 6
+Total Guesses 12
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [608157, 10, 4, 3, 10, 4, 10, 10, 1, 1]
+k nearest neighbors classes [4, 4, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 6
+Total Guesses 13
+Percent guessed correctly: 0.46153846153846156
+Getting nearest neighbor for [144888, 8, 10, 10, 8, 5, 10, 7, 8, 1]
+k nearest neighbors classes [2, 2, 2, 4, 2, 4, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 6
+Total Guesses 14
+Percent guessed correctly: 0.42857142857142855
+Getting nearest neighbor for [1296025, 4, 1, 2, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 4, 4, 4, 2, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 7
+Total Guesses 15
+Percent guessed correctly: 0.4666666666666667
+Getting nearest neighbor for [1268766, 1, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 4, 2]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 8
+Total Guesses 16
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1275807, 4, 2, 4, 3, 2, 2, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 4, 2]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 9
+Total Guesses 17
+Percent guessed correctly: 0.5294117647058824
+Getting nearest neighbor for [493452, 1, 1, 3, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [4, 2, 2, 4, 4, 4, 2]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 9
+Total Guesses 18
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1230994, 4, 5, 5, 8, 6, 10, 10, 7, 1]
+k nearest neighbors classes [4, 2, 2, 2, 2, 4, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 9
+Total Guesses 19
+Percent guessed correctly: 0.47368421052631576
+Getting nearest neighbor for [1330361, 5, 1, 1, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 10
+Total Guesses 20
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1202812, 5, 3, 3, 3, 6, 10, 3, 1, 1]
+k nearest neighbors classes [4, 4, 2, 2, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 11
+Total Guesses 21
+Percent guessed correctly: 0.5238095238095238
+Getting nearest neighbor for [1192325, 5, 5, 5, 6, 3, 10, 3, 1, 1]
+k nearest neighbors classes [2, 4, 4, 2, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 11
+Total Guesses 22
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [695219, 1, 1, 1, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 12
+Total Guesses 23
+Percent guessed correctly: 0.5217391304347826
+Getting nearest neighbor for [1239347, 8, 7, 8, 5, 10, 10, 7, 2, 1]
+k nearest neighbors classes [2, 2, 2, 4, 4, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 12
+Total Guesses 24
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1132347, 1, 1, 4, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [4, 4, 2, 4, 2, 4, 4]
+Calculating highest probable class{2=2, 4=5}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 12
+Total Guesses 25
+Percent guessed correctly: 0.48
+Getting nearest neighbor for [1295186, 10, 10, 10, 1, 6, 1, 2, 8, 1]
+k nearest neighbors classes [2, 2, 4, 4, 2, 2, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 12
+Total Guesses 26
+Percent guessed correctly: 0.46153846153846156
+Getting nearest neighbor for [1313658, 3, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 2, 4, 2, 4, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 13
+Total Guesses 27
+Percent guessed correctly: 0.48148148148148145
+Getting nearest neighbor for [1306339, 4, 4, 2, 1, 2, 5, 2, 1, 2]
+k nearest neighbors classes [4, 2, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 14
+Total Guesses 28
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1236043, 3, 3, 2, 1, 3, 1, 3, 6, 1]
+k nearest neighbors classes [2, 2, 4, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 14
+Total Guesses 29
+Percent guessed correctly: 0.4827586206896552
+Getting nearest neighbor for [734111, 1, 1, 1, 1, 2, 2, 1, 1, 1]
+k nearest neighbors classes [4, 2, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 15
+Total Guesses 30
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [411453, 1, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [4, 2, 2, 4, 2, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 15
+Total Guesses 31
+Percent guessed correctly: 0.4838709677419355
+Getting nearest neighbor for [1223543, 1, 2, 1, 3, 2, 1, 1, 2, 1]
+k nearest neighbors classes [4, 4, 4, 2, 2, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 15
+Total Guesses 32
+Percent guessed correctly: 0.46875
+Getting nearest neighbor for [61634, 5, 4, 3, 1, 2, ?, 2, 3, 1]
+k nearest neighbors classes [4, 2, 2, 4, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 16
+Total Guesses 33
+Percent guessed correctly: 0.48484848484848486
+Getting nearest neighbor for [1334071, 4, 1, 1, 1, 2, 3, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 17
+Total Guesses 34
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1299596, 6, 6, 6, 5, 4, 10, 7, 6, 2]
+k nearest neighbors classes [4, 2, 2, 4, 2, 2, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 17
+Total Guesses 35
+Percent guessed correctly: 0.4857142857142857
+Getting nearest neighbor for [733823, 5, 4, 6, 10, 2, 10, 4, 1, 1]
+k nearest neighbors classes [2, 2, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 17
+Total Guesses 36
+Percent guessed correctly: 0.4722222222222222
+Getting nearest neighbor for [1026122, 2, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 4, 4, 2, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 17
+Total Guesses 37
+Percent guessed correctly: 0.4594594594594595
+Getting nearest neighbor for [1147699, 3, 5, 7, 8, 8, 9, 7, 10, 7]
+k nearest neighbors classes [2, 4, 4, 4, 2, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 17
+Total Guesses 38
+Percent guessed correctly: 0.4473684210526316
+Getting nearest neighbor for [169356, 3, 1, 1, 1, 2, ?, 3, 1, 1]
+k nearest neighbors classes [4, 2, 4, 2, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 18
+Total Guesses 39
+Percent guessed correctly: 0.46153846153846156
+Getting nearest neighbor for [1277018, 2, 1, 1, 1, 2, 1, 3, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 4, 2]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 19
+Total Guesses 40
+Percent guessed correctly: 0.475
+Getting nearest neighbor for [1184184, 1, 1, 1, 1, 2, 5, 1, 1, 1]
+k nearest neighbors classes [2, 4, 2, 2, 4, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 19
+Total Guesses 41
+Percent guessed correctly: 0.4634146341463415
+Getting nearest neighbor for [1290203, 3, 1, 1, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 2, 2, 4, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 20
+Total Guesses 42
+Percent guessed correctly: 0.47619047619047616
+Getting nearest neighbor for [255644, 10, 5, 8, 10, 3, 10, 5, 1, 3]
+k nearest neighbors classes [2, 2, 4, 2, 2, 4, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 20
+Total Guesses 43
+Percent guessed correctly: 0.46511627906976744
+Getting nearest neighbor for [1100524, 6, 10, 10, 2, 8, 10, 7, 3, 3]
+k nearest neighbors classes [2, 4, 2, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 21
+Total Guesses 44
+Percent guessed correctly: 0.4772727272727273
+Getting nearest neighbor for [521441, 5, 1, 1, 2, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 4, 2, 4, 4, 2]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 21
+Total Guesses 45
+Percent guessed correctly: 0.4666666666666667
+Getting nearest neighbor for [704097, 1, 1, 1, 1, 1, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 2, 2, 2, 4, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 22
+Total Guesses 46
+Percent guessed correctly: 0.4782608695652174
+Getting nearest neighbor for [760239, 10, 4, 6, 4, 5, 10, 7, 1, 1]
+k nearest neighbors classes [2, 2, 2, 4, 2, 2, 4]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 22
+Total Guesses 47
+Percent guessed correctly: 0.46808510638297873
+Getting nearest neighbor for [1108449, 5, 3, 3, 4, 2, 4, 3, 4, 1]
+k nearest neighbors classes [2, 2, 4, 4, 2, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 23
+Total Guesses 48
+Percent guessed correctly: 0.4791666666666667
+Getting nearest neighbor for [1116116, 9, 10, 10, 1, 10, 8, 3, 3, 1]
+k nearest neighbors classes [2, 4, 2, 4, 2, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 24
+Total Guesses 49
+Percent guessed correctly: 0.4897959183673469
+Getting nearest neighbor for [1238777, 6, 1, 1, 3, 2, 1, 1, 1, 1]
+k nearest neighbors classes [4, 2, 2, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 24
+Total Guesses 50
+Percent guessed correctly: 0.48
+Getting nearest neighbor for [1238021, 1, 1, 1, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 4, 2, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 24
+Total Guesses 51
+Percent guessed correctly: 0.47058823529411764
+Getting nearest neighbor for [1285722, 4, 1, 1, 3, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 4, 2, 2, 2, 4]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 25
+Total Guesses 52
+Percent guessed correctly: 0.4807692307692308
+Getting nearest neighbor for [242970, 5, 7, 7, 1, 5, 8, 3, 4, 1]
+k nearest neighbors classes [4, 2, 4, 2, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 26
+Total Guesses 53
+Percent guessed correctly: 0.49056603773584906
+Getting nearest neighbor for [743348, 3, 2, 2, 1, 2, 1, 2, 3, 1]
+k nearest neighbors classes [2, 2, 4, 4, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 27
+Total Guesses 54
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1167439, 2, 3, 4, 4, 2, 5, 2, 5, 1]
+k nearest neighbors classes [4, 4, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 27
+Total Guesses 55
+Percent guessed correctly: 0.4909090909090909
+Getting nearest neighbor for [867392, 4, 2, 2, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [4, 2, 2, 2, 4, 2, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 28
+Total Guesses 56
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1354840, 5, 3, 2, 1, 3, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 2, 4]
+Calculating highest probable class{2=6, 4=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 29
+Total Guesses 57
+Percent guessed correctly: 0.5087719298245614
+Getting nearest neighbor for [1178580, 5, 1, 3, 1, 2, 1, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 4, 4, 4, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 29
+Total Guesses 58
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1210963, 10, 10, 10, 8, 6, 8, 7, 10, 1]
+k nearest neighbors classes [2, 2, 4, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 4
+Correct guess! Total number of correct guesses 30
+Total Guesses 59
+Percent guessed correctly: 0.5084745762711864
+Getting nearest neighbor for [1222936, 8, 7, 8, 7, 5, 5, 5, 10, 2]
+k nearest neighbors classes [2, 4, 4, 2, 2, 4, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 60
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [1171795, 1, 3, 1, 2, 2, 2, 5, 3, 2]
+k nearest neighbors classes [2, 4, 4, 4, 2, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 61
+Percent guessed correctly: 0.4918032786885246
+Getting nearest neighbor for [1296572, 10, 9, 8, 7, 6, 4, 7, 10, 3]
+k nearest neighbors classes [2, 2, 4, 4, 2, 2, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 62
+Percent guessed correctly: 0.4838709677419355
+Getting nearest neighbor for [1103722, 1, 1, 1, 1, 2, 1, 2, 1, 2]
+k nearest neighbors classes [4, 4, 2, 4, 4, 2, 4]
+Calculating highest probable class{2=2, 4=5}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 63
+Percent guessed correctly: 0.47619047619047616
+Getting nearest neighbor for [1174841, 5, 3, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [2, 2, 4, 4, 4, 2, 4]
+Calculating highest probable class{2=3, 4=4}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 64
+Percent guessed correctly: 0.46875
+Getting nearest neighbor for [1227210, 10, 5, 5, 6, 3, 10, 7, 9, 2]
+k nearest neighbors classes [2, 4, 4, 2, 2, 2, 4]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 65
+Percent guessed correctly: 0.46153846153846156
+Getting nearest neighbor for [1076352, 3, 6, 4, 10, 3, 3, 3, 4, 1]
+k nearest neighbors classes [4, 2, 4, 2, 4, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 30
+Total Guesses 66
+Percent guessed correctly: 0.45454545454545453
+Getting nearest neighbor for [1320077, 1, 1, 1, 1, 1, 1, 2, 1, 1]
+k nearest neighbors classes [2, 2, 2, 2, 2, 4, 4]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 31
+Total Guesses 67
+Percent guessed correctly: 0.4626865671641791
+Getting nearest neighbor for [1115762, 3, 1, 1, 1, 2, 1, 1, 1, 1]
+k nearest neighbors classes [4, 4, 2, 4, 2, 4, 4]
+Calculating highest probable class{2=2, 4=5}
+Guessing 4
+Guess :4
+Correct Class: 2
+Incorrect guess. Total number of correct guesses 31
+Total Guesses 68
+Percent guessed correctly: 0.45588235294117646
+Getting nearest neighbor for [1313982, 4, 3, 1, 1, 2, 1, 4, 8, 1]
+k nearest neighbors classes [2, 2, 2, 4, 2, 4, 2]
+Calculating highest probable class{2=5, 4=2}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 32
+Total Guesses 69
+Percent guessed correctly: 0.463768115942029
+Getting nearest neighbor for [653777, 8, 3, 4, 9, 3, 10, 3, 3, 1]
+k nearest neighbors classes [4, 2, 4, 2, 4, 2, 2]
+Calculating highest probable class{2=4, 4=3}
+Guessing 2
+Guess :2
+Correct Class: 4
+Incorrect guess. Total number of correct guesses 32
+Total Guesses 70
+Percent guessed correctly: 0.45714285714285713
+Getting nearest neighbor for [2, 1.51761, 13.89, 3.60, 1.36, 72.73, 0.48, 7.83, 0.00, 0.00]
+k nearest neighbors classes [1, 1, 1]
+Calculating highest probable class{1=3}
+Guessing 1
+Guess :1
+Correct Class: 1
+Correct guess! Total number of correct guesses 1
+Total Guesses 1
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [149, 1.51670, 13.24, 3.57, 1.38, 72.70, 0.56, 8.44, 0.00, 0.10]
+k nearest neighbors classes [3, 2, 5]
+Calculating highest probable class{2=1, 3=1, 5=1}
+Guessing 3
+Guess :3
+Correct Class: 3
+Correct guess! Total number of correct guesses 2
+Total Guesses 2
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [117, 1.51829, 13.24, 3.90, 1.41, 72.33, 0.55, 8.31, 0.00, 0.10]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 3
+Total Guesses 3
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [166, 1.52171, 11.56, 1.88, 1.56, 72.86, 0.47, 11.41, 0.00, 0.00]
+k nearest neighbors classes [3, 3, 6]
+Calculating highest probable class{3=2, 6=1}
+Guessing 3
+Guess :3
+Correct Class: 5
+Incorrect guess. Total number of correct guesses 3
+Total Guesses 4
+Percent guessed correctly: 0.75
+Getting nearest neighbor for [100, 1.51811, 12.96, 2.96, 1.43, 72.92, 0.60, 8.79, 0.14, 0.00]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 4
+Total Guesses 5
+Percent guessed correctly: 0.8
+Getting nearest neighbor for [88, 1.51645, 13.40, 3.49, 1.52, 72.65, 0.67, 8.08, 0.00, 0.10]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 5
+Total Guesses 6
+Percent guessed correctly: 0.8333333333333334
+Getting nearest neighbor for [8, 1.51756, 13.15, 3.61, 1.05, 73.24, 0.57, 8.24, 0.00, 0.00]
+k nearest neighbors classes [1, 1, 1]
+Calculating highest probable class{1=3}
+Guessing 1
+Guess :1
+Correct Class: 1
+Correct guess! Total number of correct guesses 6
+Total Guesses 7
+Percent guessed correctly: 0.8571428571428571
+Getting nearest neighbor for [105, 1.52410, 13.83, 2.90, 1.17, 71.15, 0.08, 10.79, 0.00, 0.00]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 7
+Total Guesses 8
+Percent guessed correctly: 0.875
+Getting nearest neighbor for [119, 1.51673, 13.30, 3.64, 1.53, 72.53, 0.65, 8.03, 0.00, 0.29]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 8
+Total Guesses 9
+Percent guessed correctly: 0.8888888888888888
+Getting nearest neighbor for [14, 1.51748, 12.86, 3.56, 1.27, 73.21, 0.54, 8.38, 0.00, 0.17]
+k nearest neighbors classes [1, 1, 1]
+Calculating highest probable class{1=3}
+Guessing 1
+Guess :1
+Correct Class: 1
+Correct guess! Total number of correct guesses 9
+Total Guesses 10
+Percent guessed correctly: 0.9
+Getting nearest neighbor for [70, 1.52300, 13.31, 3.58, 0.82, 71.99, 0.12, 10.17, 0.00, 0.03]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 1
+Incorrect guess. Total number of correct guesses 9
+Total Guesses 11
+Percent guessed correctly: 0.8181818181818182
+Getting nearest neighbor for [184, 1.51969, 14.56, 0.00, 0.56, 73.48, 0.00, 11.22, 0.00, 0.00]
+k nearest neighbors classes [7, 7, 5]
+Calculating highest probable class{5=1, 7=2}
+Guessing 7
+Guess :7
+Correct Class: 6
+Incorrect guess. Total number of correct guesses 9
+Total Guesses 12
+Percent guessed correctly: 0.75
+Getting nearest neighbor for [137, 1.51806, 13.00, 3.80, 1.08, 73.07, 0.56, 8.38, 0.00, 0.12]
+k nearest neighbors classes [3, 2, 2]
+Calculating highest probable class{2=2, 3=1}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 10
+Total Guesses 13
+Percent guessed correctly: 0.7692307692307693
+Getting nearest neighbor for [104, 1.52725, 13.80, 3.15, 0.66, 70.57, 0.08, 11.64, 0.00, 0.00]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 11
+Total Guesses 14
+Percent guessed correctly: 0.7857142857142857
+Getting nearest neighbor for [159, 1.51776, 13.53, 3.41, 1.52, 72.04, 0.58, 8.79, 0.00, 0.00]
+k nearest neighbors classes [5, 3, 2]
+Calculating highest probable class{2=1, 3=1, 5=1}
+Guessing 3
+Guess :3
+Correct Class: 3
+Correct guess! Total number of correct guesses 12
+Total Guesses 15
+Percent guessed correctly: 0.8
+Getting nearest neighbor for [203, 1.51514, 14.85, 0.00, 2.42, 73.72, 0.00, 8.39, 0.56, 0.00]
+k nearest neighbors classes [7, 7, 6]
+Calculating highest probable class{6=1, 7=2}
+Guessing 7
+Guess :7
+Correct Class: 7
+Correct guess! Total number of correct guesses 13
+Total Guesses 16
+Percent guessed correctly: 0.8125
+Getting nearest neighbor for [198, 1.51727, 14.70, 0.00, 2.34, 73.28, 0.00, 8.95, 0.66, 0.00]
+k nearest neighbors classes [7, 7, 6]
+Calculating highest probable class{6=1, 7=2}
+Guessing 7
+Guess :7
+Correct Class: 7
+Correct guess! Total number of correct guesses 14
+Total Guesses 17
+Percent guessed correctly: 0.8235294117647058
+Getting nearest neighbor for [103, 1.51820, 12.62, 2.76, 0.83, 73.81, 0.35, 9.42, 0.00, 0.20]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 15
+Total Guesses 18
+Percent guessed correctly: 0.8333333333333334
+Getting nearest neighbor for [115, 1.51847, 13.10, 3.97, 1.19, 72.44, 0.60, 8.43, 0.00, 0.00]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 16
+Total Guesses 19
+Percent guessed correctly: 0.8421052631578947
+Getting nearest neighbor for [34, 1.51753, 12.57, 3.47, 1.38, 73.39, 0.60, 8.55, 0.00, 0.06]
+k nearest neighbors classes [1, 1, 1]
+Calculating highest probable class{1=3}
+Guessing 1
+Guess :1
+Correct Class: 1
+Correct guess! Total number of correct guesses 17
+Total Guesses 20
+Percent guessed correctly: 0.85
+Getting nearest neighbor for [102, 1.51730, 12.35, 2.72, 1.63, 72.87, 0.70, 9.23, 0.00, 0.00]
+k nearest neighbors classes [2, 2, 2]
+Calculating highest probable class{2=3}
+Guessing 2
+Guess :2
+Correct Class: 2
+Correct guess! Total number of correct guesses 18
+Total Guesses 21
+Percent guessed correctly: 0.8571428571428571
+Getting nearest neighbor for [191, 1.51613, 13.88, 1.78, 1.79, 73.10, 0.00, 8.67, 0.76, 0.00]
+k nearest neighbors classes [7, 6, 7]
+Calculating highest probable class{6=1, 7=2}
+Guessing 7
+Guess :7
+Correct Class: 7
+Correct guess! Total number of correct guesses 19
+Total Guesses 22
+Percent guessed correctly: 0.8636363636363636
+Getting nearest neighbor for [n, y, n, y, y, y, n, n, n, n, y, ?, y, y, ?, ?]
+k nearest neighbors classes [republican, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 0
+Total Guesses 1
+Percent guessed correctly: 0.0
+Getting nearest neighbor for [y, ?, y, n, n, n, y, y, y, n, n, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 1
+Total Guesses 2
+Percent guessed correctly: 0.5
+Getting nearest neighbor for [n, ?, y, n, n, y, y, y, n, y, n, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, republican, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 2
+Total Guesses 3
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [n, n, n, y, y, y, y, y, y, y, n, y, y, y, n, y]
+k nearest neighbors classes [republican, republican, democrat, republican, republican]
+Calculating highest probable class{democrat=1, republican=4}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 3
+Total Guesses 4
+Percent guessed correctly: 0.75
+Getting nearest neighbor for [n, n, y, n, y, y, n, n, n, y, y, y, y, y, n, y]
+k nearest neighbors classes [republican, republican, republican, democrat, democrat]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: democrat
+Incorrect guess. Total number of correct guesses 3
+Total Guesses 5
+Percent guessed correctly: 0.6
+Getting nearest neighbor for [y, n, y, n, n, n, ?, y, y, ?, n, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 4
+Total Guesses 6
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [n, y, n, y, y, y, n, ?, n, y, n, y, y, y, n, ?]
+k nearest neighbors classes [republican, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 4
+Total Guesses 7
+Percent guessed correctly: 0.5714285714285714
+Getting nearest neighbor for [y, y, y, n, n, y, ?, y, y, n, y, n, y, n, y, y]
+k nearest neighbors classes [democrat, democrat, democrat, republican, republican]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 5
+Total Guesses 8
+Percent guessed correctly: 0.625
+Getting nearest neighbor for [y, y, ?, ?, ?, y, n, n, n, n, y, n, y, n, n, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 6
+Total Guesses 9
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [y, n, n, y, y, y, n, n, n, n, y, y, y, y, n, n]
+k nearest neighbors classes [democrat, republican, republican, democrat, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 6
+Total Guesses 10
+Percent guessed correctly: 0.6
+Getting nearest neighbor for [n, y, n, y, y, y, n, n, n, n, y, y, n, y, n, n]
+k nearest neighbors classes [republican, republican, democrat, republican, republican]
+Calculating highest probable class{democrat=1, republican=4}
+Guessing republican
+Guess :republican
+Correct Class: democrat
+Incorrect guess. Total number of correct guesses 6
+Total Guesses 11
+Percent guessed correctly: 0.5454545454545454
+Getting nearest neighbor for [y, ?, y, n, n, n, y, y, y, n, y, n, n, n, y, y]
+k nearest neighbors classes [republican, republican, democrat, democrat, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 7
+Total Guesses 12
+Percent guessed correctly: 0.5833333333333334
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, y, n, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, republican, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 8
+Total Guesses 13
+Percent guessed correctly: 0.6153846153846154
+Getting nearest neighbor for [n, y, n, y, y, y, n, n, n, n, n, y, y, y, n, y]
+k nearest neighbors classes [democrat, republican, democrat, republican, republican]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 9
+Total Guesses 14
+Percent guessed correctly: 0.6428571428571429
+Getting nearest neighbor for [y, y, y, n, n, n, y, y, y, n, y, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, republican, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 10
+Total Guesses 15
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [n, n, n, n, n, n, y, y, y, y, n, y, y, y, y, y]
+k nearest neighbors classes [democrat, republican, democrat, republican, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 11
+Total Guesses 16
+Percent guessed correctly: 0.6875
+Getting nearest neighbor for [n, y, n, n, y, y, n, n, n, n, n, y, y, y, y, y]
+k nearest neighbors classes [republican, republican, republican, democrat, democrat]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: democrat
+Incorrect guess. Total number of correct guesses 11
+Total Guesses 17
+Percent guessed correctly: 0.6470588235294118
+Getting nearest neighbor for [n, ?, n, y, y, y, n, n, n, n, n, y, y, y, n, n]
+k nearest neighbors classes [republican, democrat, republican, republican, republican]
+Calculating highest probable class{democrat=1, republican=4}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 12
+Total Guesses 18
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, n, y, n, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, republican, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 13
+Total Guesses 19
+Percent guessed correctly: 0.6842105263157895
+Getting nearest neighbor for [n, n, n, y, y, y, n, n, n, y, n, y, y, y, n, y]
+k nearest neighbors classes [republican, republican, democrat, republican, democrat]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 14
+Total Guesses 20
+Percent guessed correctly: 0.7
+Getting nearest neighbor for [y, y, y, y, n, n, y, y, y, y, y, n, n, y, n, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 14
+Total Guesses 21
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [n, y, y, y, y, y, n, n, n, n, y, y, ?, y, n, n]
+k nearest neighbors classes [democrat, republican, republican, democrat, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 15
+Total Guesses 22
+Percent guessed correctly: 0.6818181818181818
+Getting nearest neighbor for [n, y, n, y, y, y, n, n, n, y, n, y, y, ?, n, ?]
+k nearest neighbors classes [republican, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 15
+Total Guesses 23
+Percent guessed correctly: 0.6521739130434783
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, y, n, n, n, y, y, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 16
+Total Guesses 24
+Percent guessed correctly: 0.6666666666666666
+Getting nearest neighbor for [n, y, n, y, y, y, y, y, n, n, y, y, y, y, y, y]
+k nearest neighbors classes [republican, democrat, republican, democrat, republican]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 17
+Total Guesses 25
+Percent guessed correctly: 0.68
+Getting nearest neighbor for [?, n, y, n, n, n, y, y, y, y, y, ?, n, n, y, ?]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 18
+Total Guesses 26
+Percent guessed correctly: 0.6923076923076923
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, n, n, n, n, n, ?, y]
+k nearest neighbors classes [democrat, democrat, republican, democrat, republican]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 19
+Total Guesses 27
+Percent guessed correctly: 0.7037037037037037
+Getting nearest neighbor for [y, n, n, y, y, n, y, y, y, n, n, y, y, y, n, y]
+k nearest neighbors classes [republican, democrat, democrat, republican, republican]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 20
+Total Guesses 28
+Percent guessed correctly: 0.7142857142857143
+Getting nearest neighbor for [y, n, y, n, n, y, y, y, n, y, y, n, y, y, y, y]
+k nearest neighbors classes [democrat, democrat, republican, democrat, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 21
+Total Guesses 29
+Percent guessed correctly: 0.7241379310344828
+Getting nearest neighbor for [y, y, n, y, n, n, y, y, y, n, y, n, n, y, n, y]
+k nearest neighbors classes [republican, republican, democrat, democrat, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 22
+Total Guesses 30
+Percent guessed correctly: 0.7333333333333333
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, n, n, n, n, n, n, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 23
+Total Guesses 31
+Percent guessed correctly: 0.7419354838709677
+Getting nearest neighbor for [n, n, y, n, y, n, y, y, y, n, n, n, n, y, ?, y]
+k nearest neighbors classes [democrat, democrat, republican, republican, republican]
+Calculating highest probable class{democrat=2, republican=3}
+Guessing republican
+Guess :republican
+Correct Class: democrat
+Incorrect guess. Total number of correct guesses 23
+Total Guesses 32
+Percent guessed correctly: 0.71875
+Getting nearest neighbor for [y, n, y, y, y, y, y, y, n, y, y, y, n, y, y, y]
+k nearest neighbors classes [democrat, republican, democrat, republican, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 23
+Total Guesses 33
+Percent guessed correctly: 0.696969696969697
+Getting nearest neighbor for [n, y, y, n, y, y, n, n, n, y, y, y, y, y, n, ?]
+k nearest neighbors classes [republican, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 24
+Total Guesses 34
+Percent guessed correctly: 0.7058823529411765
+Getting nearest neighbor for [y, n, y, n, n, n, y, y, y, n, n, n, n, n, y, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 25
+Total Guesses 35
+Percent guessed correctly: 0.7142857142857143
+Getting nearest neighbor for [?, n, y, y, n, y, y, y, y, y, n, y, n, y, n, y]
+k nearest neighbors classes [republican, democrat, republican, democrat, democrat]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 25
+Total Guesses 36
+Percent guessed correctly: 0.6944444444444444
+Getting nearest neighbor for [y, y, y, n, y, y, n, y, n, y, y, n, y, y, y, y]
+k nearest neighbors classes [democrat, democrat, republican, democrat, republican]
+Calculating highest probable class{democrat=3, republican=2}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 26
+Total Guesses 37
+Percent guessed correctly: 0.7027027027027027
+Getting nearest neighbor for [n, y, n, y, y, y, n, n, n, y, n, y, y, y, n, ?]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, republican]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: republican
+Incorrect guess. Total number of correct guesses 26
+Total Guesses 38
+Percent guessed correctly: 0.6842105263157895
+Getting nearest neighbor for [n, n, y, n, n, n, y, y, y, n, n, n, n, n, y, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 27
+Total Guesses 39
+Percent guessed correctly: 0.6923076923076923
+Getting nearest neighbor for [n, n, y, n, n, n, y, y, y, y, n, n, y, n, y, y]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 28
+Total Guesses 40
+Percent guessed correctly: 0.7
+Getting nearest neighbor for [n, y, y, n, n, y, n, y, y, n, y, n, ?, ?, ?, ?]
+k nearest neighbors classes [republican, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 29
+Total Guesses 41
+Percent guessed correctly: 0.7073170731707317
+Getting nearest neighbor for [y, ?, n, y, y, y, n, y, n, n, n, y, y, y, n, y]
+k nearest neighbors classes [republican, democrat, republican, republican, republican]
+Calculating highest probable class{democrat=1, republican=4}
+Guessing republican
+Guess :republican
+Correct Class: republican
+Correct guess! Total number of correct guesses 30
+Total Guesses 42
+Percent guessed correctly: 0.7142857142857143
+Getting nearest neighbor for [?, ?, ?, ?, n, y, y, y, y, y, ?, n, y, y, n, ?]
+k nearest neighbors classes [democrat, democrat, republican, democrat, democrat]
+Calculating highest probable class{democrat=4, republican=1}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 31
+Total Guesses 43
+Percent guessed correctly: 0.7209302325581395
+Getting nearest neighbor for [?, ?, ?, ?, ?, ?, ?, ?, y, ?, ?, ?, ?, ?, ?, ?]
+k nearest neighbors classes [democrat, democrat, democrat, democrat, democrat]
+Calculating highest probable class{democrat=5}
+Guessing democrat
+Guess :democrat
+Correct Class: democrat
+Correct guess! Total number of correct guesses 32
+Total Guesses 44
+Percent guessed correctly: 0.7272727272727273
+Getting nearest neighbor for [5.1, 3.8, 1.9, 0.4]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 1
+Total Guesses 1
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [5.5, 3.5, 1.3, 0.2]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 2
+Total Guesses 2
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [6.0, 3.0, 4.8, 1.8]
+k nearest neighbors classes [Iris-virginica, Iris-versicolor, Iris-virginica]
+Calculating highest probable class{Iris-versicolor=1, Iris-virginica=2}
+Guessing Iris-virginica
+Guess :Iris-virginica
+Correct Class: Iris-virginica
+Correct guess! Total number of correct guesses 3
+Total Guesses 3
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [4.6, 3.2, 1.4, 0.2]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 4
+Total Guesses 4
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [7.0, 3.2, 4.7, 1.4]
+k nearest neighbors classes [Iris-versicolor, Iris-versicolor, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=3}
+Guessing Iris-versicolor
+Guess :Iris-versicolor
+Correct Class: Iris-versicolor
+Correct guess! Total number of correct guesses 5
+Total Guesses 5
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [6.6, 2.9, 4.6, 1.3]
+k nearest neighbors classes [Iris-versicolor, Iris-versicolor, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=3}
+Guessing Iris-versicolor
+Guess :Iris-versicolor
+Correct Class: Iris-versicolor
+Correct guess! Total number of correct guesses 6
+Total Guesses 6
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [5.8, 2.7, 5.1, 1.9]
+k nearest neighbors classes [Iris-virginica, Iris-virginica, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=1, Iris-virginica=2}
+Guessing Iris-virginica
+Guess :Iris-virginica
+Correct Class: Iris-virginica
+Correct guess! Total number of correct guesses 7
+Total Guesses 7
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [5.7, 2.8, 4.5, 1.3]
+k nearest neighbors classes [Iris-virginica, Iris-virginica, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=1, Iris-virginica=2}
+Guessing Iris-virginica
+Guess :Iris-virginica
+Correct Class: Iris-versicolor
+Incorrect guess. Total number of correct guesses 7
+Total Guesses 8
+Percent guessed correctly: 0.875
+Getting nearest neighbor for [6.3, 2.7, 4.9, 1.8]
+k nearest neighbors classes [Iris-virginica, Iris-versicolor, Iris-virginica]
+Calculating highest probable class{Iris-versicolor=1, Iris-virginica=2}
+Guessing Iris-virginica
+Guess :Iris-virginica
+Correct Class: Iris-virginica
+Correct guess! Total number of correct guesses 8
+Total Guesses 9
+Percent guessed correctly: 0.8888888888888888
+Getting nearest neighbor for [5.1, 3.8, 1.6, 0.2]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 9
+Total Guesses 10
+Percent guessed correctly: 0.9
+Getting nearest neighbor for [5.4, 3.4, 1.5, 0.4]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 10
+Total Guesses 11
+Percent guessed correctly: 0.9090909090909091
+Getting nearest neighbor for [4.7, 3.2, 1.6, 0.2]
+k nearest neighbors classes [Iris-setosa, Iris-setosa, Iris-setosa]
+Calculating highest probable class{Iris-setosa=3}
+Guessing Iris-setosa
+Guess :Iris-setosa
+Correct Class: Iris-setosa
+Correct guess! Total number of correct guesses 11
+Total Guesses 12
+Percent guessed correctly: 0.9166666666666666
+Getting nearest neighbor for [6.7, 3.0, 5.0, 1.7]
+k nearest neighbors classes [Iris-virginica, Iris-versicolor, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=2, Iris-virginica=1}
+Guessing Iris-versicolor
+Guess :Iris-versicolor
+Correct Class: Iris-versicolor
+Correct guess! Total number of correct guesses 12
+Total Guesses 13
+Percent guessed correctly: 0.9230769230769231
+Getting nearest neighbor for [6.3, 3.3, 4.7, 1.6]
+k nearest neighbors classes [Iris-virginica, Iris-versicolor, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=2, Iris-virginica=1}
+Guessing Iris-versicolor
+Guess :Iris-versicolor
+Correct Class: Iris-versicolor
+Correct guess! Total number of correct guesses 13
+Total Guesses 14
+Percent guessed correctly: 0.9285714285714286
+Getting nearest neighbor for [7.7, 2.6, 6.9, 2.3]
+k nearest neighbors classes [Iris-versicolor, Iris-virginica, Iris-versicolor]
+Calculating highest probable class{Iris-versicolor=2, Iris-virginica=1}
+Guessing Iris-versicolor
+Guess :Iris-versicolor
+Correct Class: Iris-virginica
+Incorrect guess. Total number of correct guesses 13
+Total Guesses 15
+Percent guessed correctly: 0.8666666666666667
 Getting nearest neighbor for [2, 1, 1, 0, 0, 3, 1, 2, 0, 2, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 1, 2, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 1]
 k nearest neighbors classes [D4, D4, D1]
 Calculating highest probable class{D4=2, D1=1}
@@ -14,29 +1364,38 @@ Guessing D4
 Guess :D4
 Correct Class: D4
 Correct guess! Total number of correct guesses 1
+Total Guesses 1
+Percent guessed correctly: 1.0
+Getting nearest neighbor for [4, 0, 2, 1, 0, 3, 0, 2, 0, 2, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 1, 1, 1, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0]
+k nearest neighbors classes [D1, D4, D4]
+Calculating highest probable class{D4=2, D1=1}
+Guessing D4
+Guess :D4
+Correct Class: D1
+Incorrect guess. Total number of correct guesses 1
 Total Guesses 2
 Percent guessed correctly: 0.5
-Getting nearest neighbor for [2, 1, 2, 1, 1, 3, 1, 2, 1, 2, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 2, 0, 1, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 1]
+Getting nearest neighbor for [6, 0, 2, 1, 0, 3, 0, 1, 1, 1, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 1, 1, 1, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0]
+k nearest neighbors classes [D1, D4, D4]
+Calculating highest probable class{D4=2, D1=1}
+Guessing D4
+Guess :D4
+Correct Class: D1
+Incorrect guess. Total number of correct guesses 1
+Total Guesses 3
+Percent guessed correctly: 0.3333333333333333
+Getting nearest neighbor for [1, 1, 2, 1, 1, 2, 3, 1, 1, 1, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 2, 0, 1, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 1]
 k nearest neighbors classes [D4, D4, D1]
 Calculating highest probable class{D4=2, D1=1}
 Guessing D4
 Guess :D4
 Correct Class: D4
 Correct guess! Total number of correct guesses 2
-Total Guesses 3
-Percent guessed correctly: 0.6666666666666666
-Getting nearest neighbor for [3, 0, 0, 1, 0, 1, 2, 1, 0, 0, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 0, 3, 0, 0, 0, 2, 1, 0, 4, 0, 0, 0, 0, 0, 0]
-k nearest neighbors classes [D4, D1, D4]
-Calculating highest probable class{D4=2, D1=1}
-Guessing D4
-Guess :D4
-Correct Class: D2
-Incorrect guess. Total number of correct guesses 2
 Total Guesses 4
 Percent guessed correctly: 0.5
-Getting nearest neighbor for [0, 1, 2, 1, 0, 3, 1, 1, 0, 0, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 1, 2, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 1]
-k nearest neighbors classes [D4, D4, D2]
-Calculating highest probable class{D4=2, D2=1}
+Getting nearest neighbor for [3, 1, 1, 0, 0, 2, 1, 2, 1, 2, 1, 1, 0, 2, 2, 0, 0, 0, 1, 0, 2, 2, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 1]
+k nearest neighbors classes [D4, D4, D1]
+Calculating highest probable class{D4=2, D1=1}
 Guessing D4
 Guess :D4
 Correct Class: D4

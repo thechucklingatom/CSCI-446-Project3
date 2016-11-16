@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 	private static final ArrayList<String> fileNameList = new ArrayList<>();
@@ -21,7 +20,7 @@ public class Main {
 	private static final int SOYBEAN_CLASS = 35;
 
 	public static void main(String[] args) {
-	// write your code here
+		// write your code here
 
 		fileNameList.add(CANCER);
 		fileNameList.add(GLASS);
@@ -37,36 +36,36 @@ public class Main {
 
 		FileWriter fileWriter = null;
 
-		for(int i = 0; i < fileNameList.size(); i++) {
+		String outputFilePath = "runs" + File.separator + "knn.txt";
 
-			DataContainer container = new DataContainer();
-			container.populateData(fileNameList.get(i), classificationLocationList.get(i));
 
-			List<List<String>> data = container.getData();
+			/*List<List<String>> data = container.getData();
 			List<String> classification = container.getClassification();
 
 			data.forEach(System.out::println);
 
-			classification.forEach(System.out::println);
+			classification.forEach(System.out::println);*/
 
-			String outputFilePath = "runs" + File.separator + "knn.txt";
 
-			try {
-				fileWriter = new FileWriter(outputFilePath);
+		try {
+
+			fileWriter = new FileWriter(outputFilePath);
+			for (int i = 0; i < fileNameList.size(); i++) {
+
+				DataContainer container = new DataContainer();
+				container.populateData(fileNameList.get(i), classificationLocationList.get(i));
 
 				kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
 
 				kNearestNeighbor.classify();
-
-			} catch (IOException ex) {
-				ex.printStackTrace();
-				System.out.println("could not find file");
-				System.exit(2);
 			}
-
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			System.out.println("could not find file");
+			System.exit(2);
 		}
 
-		if(fileWriter != null) {
+		if (fileWriter != null) {
 			try {
 				fileWriter.close();
 			} catch (IOException e) {
