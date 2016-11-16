@@ -34,6 +34,10 @@ public class kNearestNeighbor {
 		k = (int)Math.ceil(dataContainer.getDataFold().get(0).size() * .1);
 		correct = 0;
 		foldToWrite = 0;
+
+		if(k < 3){
+			k = 3;
+		}
 	}
 
 	List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
@@ -45,6 +49,18 @@ public class kNearestNeighbor {
 		for(int i = 0; i < k; i++){
 			toReturn.add(classReference.get(distanceIndices.get(i).index));
 		}
+
+		if(foldToWrite == currentFold){
+			try {
+				fileOutput.append("k nearest neighbors classes ");
+				fileOutput.append(toReturn.toString());
+				fileOutput.append("\n");
+			} catch (IOException ex){
+				ex.printStackTrace();
+				System.out.println("error printing in get Nearest Neighbor");
+			}
+		}
+
 		return toReturn;
 	}
 
@@ -122,6 +138,19 @@ public class kNearestNeighbor {
 			}
 		}
 
+		if(foldToWrite == currentFold){
+			try {
+				fileOutput.append("Calculating highest probable class");
+				fileOutput.append(classCounter.toString());
+				fileOutput.append("\nGuessing ");
+				fileOutput.append(toReturn);
+				fileOutput.append("\n");
+			} catch (IOException ex){
+				ex.printStackTrace();
+				System.out.println("error printing in get Nearest Neighbor");
+			}
+		}
+
 		classCounter.clear();
 
 		return toReturn;
@@ -132,10 +161,55 @@ public class kNearestNeighbor {
 			for(int j = 0; j < dataContainer.getDataFold().get(i).size(); j++){
 				String guess =
 						getClassification(getNearestNeighborsClassification(getNearestNeighbors(j)));
+
+				if(foldToWrite == currentFold){
+					try {
+						fileOutput.append("Guess :");
+						fileOutput.append(guess);
+						fileOutput.append("\nCorrect Class: ");
+						fileOutput.append(dataContainer.getClassificationFold().get(i).get(j));
+						fileOutput.append("\n");
+					} catch (IOException ex){
+						ex.printStackTrace();
+						System.out.println("error printing in classify");
+					}
+				}
+
 				if(dataContainer.getClassificationFold().get(i).get(j).equals(guess)){
 					correct++;
+					if(foldToWrite == currentFold) {
+						try {
+							fileOutput.append("Correct guess! Total number of correct guesses ");
+							fileOutput.append(String.valueOf(correct));
+							fileOutput.append("\nTotal Guesses ");
+							fileOutput.append(String.valueOf(j + 1));
+							fileOutput.append("\nPercent guessed correctly: ");
+							fileOutput.append(String.valueOf((double) correct / (double) (j + 1)));
+							fileOutput.append("\n");
+						} catch (IOException ex) {
+							ex.printStackTrace();
+							System.out.println("error printing in classify");
+						}
+					}
+				}else{
+
+					if(foldToWrite == currentFold) {
+						try {
+							fileOutput.append("Incorrect guess. Total number of correct guesses ");
+							fileOutput.append(String.valueOf(correct));
+							fileOutput.append("\nTotal Guesses ");
+							fileOutput.append(String.valueOf(j + 1));
+							fileOutput.append("\nPercent guessed correctly: ");
+							fileOutput.append(String.valueOf((double) correct / (double) (j + 1)));
+							fileOutput.append("\n");
+						} catch (IOException ex) {
+							ex.printStackTrace();
+							System.out.println("error printing in classify");
+						}
+					}
 				}
 			}
+			currentFold++;
 			correct = 0;
 		}
 	}
