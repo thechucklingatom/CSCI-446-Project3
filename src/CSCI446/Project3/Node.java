@@ -9,6 +9,9 @@ import java.util.List;
 class Node {
 	//some sort of information to hold
 
+	private String data;
+	private boolean isClass;
+
 	private List<Node> children;
 	private Node parent;
 	public Node(){
@@ -31,5 +34,21 @@ class Node {
 
 	public void removeChild(Node toRemove){
 		children.remove(toRemove);
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public boolean isClass() {
+		return isClass;
+	}
+
+	public void setClass(boolean aClass) {
+		isClass = aClass;
 	}
 }
