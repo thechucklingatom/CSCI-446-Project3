@@ -46,6 +46,9 @@ public class kNearestNeighbor {
 
 		List<String> classReference = dataContainer.getClassificationFold().get(currentFold);
 
+		if(k >= distanceIndices.size()){
+			k = distanceIndices.size() - 1;
+		}
 		for(int i = 0; i < k; i++){
 			toReturn.add(classReference.get(distanceIndices.get(i).index));
 		}

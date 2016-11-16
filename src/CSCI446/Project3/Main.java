@@ -3,10 +3,12 @@ package CSCI446.Project3;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
+	private static final ArrayList<String> fileNameList = new ArrayList<>();
+	private static final ArrayList<Integer> classificationLocationList = new ArrayList<>();
 	private static final String CANCER = "data" + File.separator + "breast-cancer-wisconsin.data.txt";
 	private static final int CANCER_CLASS = 10;
 	private static final String GLASS = "data" + File.separator + "glass.data.txt";
@@ -20,31 +22,56 @@ public class Main {
 
 	public static void main(String[] args) {
 	// write your code here
-		DataContainer container = new DataContainer();
-		container.populateData(IRIS, IRIS_CLASS);
 
-		List<List<String>> data = container.getData();
-		List<String> classification = container.getClassification();
+		fileNameList.add(CANCER);
+		fileNameList.add(GLASS);
+		fileNameList.add(HOUSE);
+		fileNameList.add(IRIS);
+		fileNameList.add(SOYBEAN);
 
-		data.forEach(System.out::println);
+		classificationLocationList.add(CANCER_CLASS);
+		classificationLocationList.add(GLASS_CLASS);
+		classificationLocationList.add(HOUSE_CLASS);
+		classificationLocationList.add(IRIS_CLASS);
+		classificationLocationList.add(SOYBEAN_CLASS);
 
-		classification.forEach(System.out::println);
+		FileWriter fileWriter = null;
 
-		String outputFilePath = "runs" + File.separator + "knn.txt";
+		for(int i = 0; i < fileNameList.size(); i++) {
 
-		try{
-			FileWriter fileWriter = new FileWriter(outputFilePath);
+			DataContainer container = new DataContainer();
+			container.populateData(fileNameList.get(i), classificationLocationList.get(i));
 
-			kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
+			List<List<String>> data = container.getData();
+			List<String> classification = container.getClassification();
 
-			kNearestNeighbor.classify();
+			data.forEach(System.out::println);
 
-			fileWriter.close();
-		} catch (IOException ex){
-			ex.printStackTrace();
-			System.out.println("could not find file");
-			System.exit(2);
+			classification.forEach(System.out::println);
+
+			String outputFilePath = "runs" + File.separator + "knn.txt";
+
+			try {
+				fileWriter = new FileWriter(outputFilePath);
+
+				kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
+
+				kNearestNeighbor.classify();
+
+			} catch (IOException ex) {
+				ex.printStackTrace();
+				System.out.println("could not find file");
+				System.exit(2);
+			}
+
 		}
 
+		if(fileWriter != null) {
+			try {
+				fileWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
