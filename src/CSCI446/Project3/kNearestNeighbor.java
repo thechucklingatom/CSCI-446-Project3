@@ -16,7 +16,7 @@ import java.util.Random;
  * @author thechucklingatom
  */
 public class kNearestNeighbor {
-	private int foldToWrite;
+	private int foldToWrite;	// which fold are we actually writing on
 	private Writer fileOutput;
 	private DataContainer dataContainer;
 	private int currentFold;

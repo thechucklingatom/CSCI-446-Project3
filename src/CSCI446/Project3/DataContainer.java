@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Robert Putnam on 11/4/16.
  *
- * @author Robert Putname
+ * @author Robert Putnam
  */
 class DataContainer {
 
