@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,20 +23,30 @@ class DataContainer {
 	private List<List<List<String>>> dataFold;
 	private List<List<String>> classificationFold;
 
+	/**
+	 * Object to hold all the data from the file.
+	 */
 	DataContainer(){
 		data = new ArrayList<>();
 		classification = new ArrayList<>();
 		classTypes = new ArrayList<>();
 	}
 
+	/**
+	 * Get the data from the files formatted as a csv.
+	 * @param filePath Path of the file.
+	 * @param classificationLocation What column (zero indexed) contains the classification.
+	 */
 	void populateData(String filePath, int classificationLocation){
         // setup FileReader for reading in CSV files
 		ArrayList<String> rows = new ArrayList<>();
 		FileReader fileReader = null;
 		try {
+			//tries to open the file
 			fileReader = new FileReader(filePath);
 		} catch (FileNotFoundException e) {
             // double check directories and confirm filePaths listed in Main.java
+			//if the file doesn't exist show the error and exit the program.
 			e.printStackTrace();
 			System.out.println("File not found, exiting");
 			System.exit(2);
@@ -54,8 +65,9 @@ class DataContainer {
 			System.out.println("Error reading from file, exiting");
 			System.exit(3);
 		}
-
-		Collections.shuffle(rows);  // shuffle data around (used in 10-fold verification)
+		// shuffle data around (used in 10-fold verification), makes sure the folds are random
+		// for each run.
+		Collections.shuffle(rows);
 
 		for (String row : rows) {
 			// modify data to remove new-lines and carriage returns
@@ -79,11 +91,12 @@ class DataContainer {
 	}
 
 	private void fillUniqueClassList() {
+		//gets all the possible class types with no duplicates.
 		classTypes = classification.stream().distinct().collect(Collectors.toList());
 	}
 
 	private void generateFolds(){
-		// round data into larger groups to minimize number of small folds
+		// round data into larger groups to minimize number of small folds.
 		int sizeOfFolds = (int)Math.ceil(data.size() / 10.0);
 
 		dataFold = new ArrayList<>();
@@ -97,23 +110,45 @@ class DataContainer {
 		}
 	}
 
+	//getters and setters
     List<List<String>> getData() {
 		return data;
 	}
 
+	/**
+	 * gets the total list that has the classes corresponding to the data
+	 *
+	 */
 	List<String> getClassification() {
 		return classification;
 	}
 
+	/**
+	 * the unique list of class
+	 *
+	 */
 	List<String> getClassTypes() {
 		return classTypes;
 	}
 
-	public List<List<List<String>>> getDataFold() {
+	List<List<List<String>>> getDataFold() {
 		return dataFold;
 	}
 
-	public List<List<String>> getClassificationFold() {
+	List<List<String>> getClassificationFold() {
 		return classificationFold;
+	}
+
+	List<List<String>> transposeList(List<List<String>> toTranspose){
+		List<List<String>> toReturn = new ArrayList<>();
+		for(int i = 0; i < toTranspose.size(); i++){
+			ArrayList<String> column = new ArrayList<>();
+			for(List<String> row : toTranspose){
+				column.add(row.get(i));
+			}
+			toReturn.add(column);
+		}
+
+		return toReturn;
 	}
 }
