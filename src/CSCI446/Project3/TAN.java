@@ -25,14 +25,6 @@ public class TAN {
          */
         int currentAttribute = 0;   // index tracks the current index we are discretizing
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
-        int numAttrib = currentData.get(0).size();
-        for (int i = 0; i < numAttrib; i++) {
-            // create a list of attributes (transpose data list)
-
-        }
-        for (List<String> row : currentData) {
-            //
-        }
 
     }
 
