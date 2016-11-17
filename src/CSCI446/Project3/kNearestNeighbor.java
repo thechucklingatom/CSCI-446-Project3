@@ -56,7 +56,7 @@ class kNearestNeighbor {
 	 *                        that point.
 	 * @return A list of the of the of the distances and their corresponding indices.
 	 */
-	List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
+	private List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
 		//list of neighbors classes to return
 		ArrayList<String> toReturn = new ArrayList<>();
 		//sort the distances to make the smallest at the beginning and largest at the end.
@@ -92,7 +92,7 @@ class kNearestNeighbor {
 	 * @param index the index of the point you want to find all the distances from.
 	 * @return the List of the distances and the corresponding indices that go with that distance.
 	 */
-	List<DistanceIndex> getNearestNeighbors(int index) {
+	private List<DistanceIndex> getNearestNeighbors(int index) {
 		//again if the fold is the one we have designated to writing. output what neighbor we are
 		//trying to find.
 		if (foldToWrite == currentFold) {
@@ -134,7 +134,7 @@ class kNearestNeighbor {
 	 * @param point2 The second point
 	 * @return The Distance between the two points.
 	 */
-	double calculateDistance(List<String> point1, List<String> point2) {
+	private double calculateDistance(List<String> point1, List<String> point2) {
 		double distance = 0;
 		//calculate the distance for each attribute
 		for (int i = 0; i < point1.size() && i < point2.size(); i++) {
@@ -169,7 +169,7 @@ class kNearestNeighbor {
 	 * @param possibleClasses The list of possible classes by the neighbor.
 	 * @return The class guess based on the neighbors
 	 */
-	String getClassification(List<String> possibleClasses) {
+	private String getClassification(List<String> possibleClasses) {
 		for (String classification : possibleClasses) {
 			if (classCounter.containsKey(classification)) {
 				classCounter.put(classification, classCounter.get(classification) + 1);
