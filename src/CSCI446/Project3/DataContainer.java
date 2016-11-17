@@ -131,14 +131,27 @@ class DataContainer {
 		return classTypes;
 	}
 
+	/**
+	 * the list that contains the partitioned data
+	 *
+	 */
 	List<List<List<String>>> getDataFold() {
 		return dataFold;
 	}
 
+	/**
+	 * the list that contains the partitioned classes that correspond to the data rows.
+	 *
+	 */
 	List<List<String>> getClassificationFold() {
 		return classificationFold;
 	}
 
+	/**
+	 * Transposes a list to group attributes instead of rows of data.
+	 * @param toTranspose the Matrix to transpose
+	 * @return The transposed lists.
+	 */
 	List<List<String>> transposeList(List<List<String>> toTranspose){
 		List<List<String>> toReturn = new ArrayList<>();
 		for(int i = 0; i < toTranspose.size(); i++){
