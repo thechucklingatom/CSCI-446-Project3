@@ -46,10 +46,7 @@ public class kNearestNeighbor {
 
 		List<String> classReference = dataContainer.getClassificationFold().get(currentFold);
 
-		if(k >= distanceIndices.size()){
-			k = distanceIndices.size() - 1;
-		}
-		for(int i = 0; i < k; i++){
+		for(int i = 0; i < k && i < distanceIndices.size(); i++){
 			toReturn.add(classReference.get(distanceIndices.get(i).index));
 		}
 
@@ -101,7 +98,7 @@ public class kNearestNeighbor {
 	double calculateDistance(List<String> point1, List<String> point2) {
 		double distance = 0;
 		for(int i = 0; i < point1.size() && i < point2.size(); i++){
-			//Euclidean Distance
+			//Minkowski Distance
 			String point1CurrentValue = point1.get(i);
 			String point2CurrentValue = point2.get(i);
 
@@ -110,15 +107,15 @@ public class kNearestNeighbor {
 
 			try {
 				distance += Math.pow(
-						Double.valueOf(point1CurrentValue) - Double.valueOf(point2CurrentValue), 2);
+						Double.valueOf(point1CurrentValue) - Double.valueOf(point2CurrentValue), point1.size());
 			} catch (NumberFormatException ex) {
 				distance += Math.pow(
-						(int)point1.get(i).charAt(0) - (int)point2.get(i).charAt(0), 2);
+						(int)point1.get(i).charAt(0) - (int)point2.get(i).charAt(0), point1.size());
 			}
 
 		}
 
-		distance = Math.pow(distance, .5);
+		distance = Math.pow(Math.abs(distance), 1.0 / point1.size());
 
 		return distance;
 	}
