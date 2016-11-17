@@ -18,9 +18,8 @@ public class DistanceIndex implements Comparable {
 			}else if(distance > ((DistanceIndex) o).distance){
 				return 1;
 			}
-		}else{
-			throw new ClassCastException();
 		}
-		return 0;
+
+		throw new ClassCastException();
 	}
 }
