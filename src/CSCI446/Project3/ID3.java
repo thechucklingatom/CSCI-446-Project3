@@ -12,10 +12,12 @@ public class ID3 {
     private DataContainer container;
     private int currentFold;
     private List<List<String>> trainingSet;
+    private List<List<String>> trainingSetClass;
     private int testingFold;
     private Tree tree;
     private List<List<Bin>> binAtt;
-    private List<String> classification;
+    private List<List<String>> classification;
+    private List<String> classTypes;
     private final int MAX_NUM_BINS = 6;
 
     public ID3(Writer inWriter, DataContainer inContainer) {
@@ -23,6 +25,8 @@ public class ID3 {
         this.container = inContainer;
         tree = new Tree();
         binAtt = new ArrayList<>();
+        classTypes = container.getClassTypes();
+        classification = container.getClassificationFold();
     }
 
     //takes in a transposed training set (to make rows  attributes) and bin it
@@ -57,6 +61,11 @@ public class ID3 {
             binAtt.add(bins);
             //obtain a list of the unique values in this attribute
             List<String> uniqueValue = new ArrayList<>();
+            for(String s : inAtt){
+                if(!uniqueValue.contains(s)){
+                    uniqueValue.add(s);
+                }
+            }
             //create the unique doubles that will bound our bins
             List<Double> stringHash = new ArrayList<>();
             for (String s : uniqueValue) {
@@ -127,10 +136,40 @@ public class ID3 {
     }
 
     //this is the actual recursive method to run ID3
-    public void id3(List<List<String>> examples, List<Integer> attributes, List<List<String>> parentExamples) {
+    public Tree id3(List<List<Bin>> examples, List<Integer> attributes, List<List<Bin>> parentExamples, List<String> parentExClass) {
         if(examples.size() == 0){
-
+            String maxString = pluralityValue(parentExClass);
+            Tree tree = new Tree();
         }
+        return null;
+    }
+
+    public String pluralityValue(List<String> parentExClass){
+        List<String> uniqueClass = new ArrayList<>();
+        List<Integer> classFreq = new ArrayList<>();
+        for(String s : parentExClass){
+            if(!uniqueClass.contains(s)){
+                uniqueClass.add(s);
+                classFreq.add(1);
+            } else {
+                int i = uniqueClass.indexOf(s);
+                int oldVal = classFreq.get(i);
+                classFreq.set(i, oldVal+1);
+            }
+        }
+        int maxFreq = Integer.MIN_VALUE;
+        String maxString = "";
+        for(int i = 0; i < classFreq.size(); i++){
+            if(maxFreq < classFreq.get(i)){
+                maxFreq = classFreq.get(i);
+                maxString = uniqueClass.get(i);
+            }
+        }
+        return maxString;
+    }
+
+    public double entropy(List<List<Bin>> givenAttribute){
+
     }
 
     public void prune(Tree decisionTree){
@@ -143,6 +182,7 @@ public class ID3 {
         //iterate which fold is currently the test set
         for (int i = 0; i < 10; i++) {
             trainingSet = new ArrayList<>();
+            trainingSetClass = new ArrayList<>();
             //combine the training folds into one fold j=folds, k=rows to add
             for(int j = 0; j < 10; j++) {
                 for(int k = 0; k < allFolds.get(j).get(k).size(); k++) {
