@@ -124,8 +124,10 @@ public class TAN {
                     for (int row = 0; row < tranData.size(); row++) {
                         attribBins.add(discretizeRow(tranData.get(row)));
                     }
+                    generatedBins = true;
                 } else {
                     // fill bins with data now
+                    fillBins();
                 }
 
             }
