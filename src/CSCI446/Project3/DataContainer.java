@@ -1,5 +1,7 @@
 package CSCI446.Project3;
 
+import com.sun.glass.ui.Size;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -153,9 +155,10 @@ class DataContainer {
 	 */
 	List<List<String>> transposeList(List<List<String>> toTranspose){
 		List<List<String>> toReturn = new ArrayList<>();
-		for(int i = 0; i < toTranspose.size(); i++){
+		for(int i = 0; i < toTranspose.get(0).size(); i++){
 			ArrayList<String> column = new ArrayList<>();
-			for(List<String> row : toTranspose){
+			for (int j = 0; j < toTranspose.size(); j++) {
+				List<String> row = toTranspose.get(j);
 				column.add(row.get(i));
 			}
 			toReturn.add(column);
