@@ -35,16 +35,17 @@ public class TAN {
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
         List<List<String>> tranData = dc.transposeList(currentData); // rows of attrib
 
-        for (int row = 0; row <= tranData.size(); row++) {
+        for (int row = 0; row < tranData.size(); row++) {
             attribBins.add(discretizeRow(tranData.get(row)));
         }
     }
 
+    /**
+     * Converts attribute Strings into Bins for classifying attributes
+     * @param rawData List of String data for attribute values
+     * @return List of Bin that summarize the attribute value parameter
+     */
     private List<Bin> discretizeRow(List<String> rawData) {
-        /**
-         * Takes the data and creates a bin that captures the attributes given
-         * This will handle:
-         */
         List<Bin> binForThisAttr = new ArrayList<>();
         List<Double> procData = new ArrayList<>();
         // are we working with numbers or actual Strings
@@ -80,6 +81,9 @@ public class TAN {
         return binForThisAttr;
     }
 
+    /**
+     * Generates the Prior probabilities of a given class
+     */
     public void buildPriors() {
         // grab the list of all class labels for this fold
         List<List<String>> classListHolder = dc.getClassificationFold();
