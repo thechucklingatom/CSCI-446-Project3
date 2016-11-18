@@ -16,9 +16,10 @@ public class TAN {
     private Writer logger;      // logger used for testing and decision making
     private List<List<Bin>> attribBins;
 
-    public TAN(DataContainer dc, Writer logger) {
+    public TAN(DataContainer dc, Writer logger, int currentFold) {
         this.dc = dc;
         this.logger = logger;
+        this.currentFold = currentFold;
     }
 
     private void discretizeData() {
@@ -26,15 +27,11 @@ public class TAN {
          * take all doubles for attributes and recalculate their values into discrete values
          */
 
-        List<List<Integer>> discData = new ArrayList<>();
-
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
         List<List<String>> tranData = dc.transposeList(currentData); // rows of attrib
 
         for (int row = 0; row <= tranData.size(); row++) {
-            if (needsDiscretation(tranData.get(row))) {
                 attribBins.add(discretizeRow(tranData.get(row)));
-            }
         }
 
     }
@@ -65,6 +62,7 @@ public class TAN {
         return binForThisAttr;
     }
 
+    @Deprecated // all attributes go through Naive Estimator process
     private boolean needsDiscretation(List<String> attribData) {
         for (String value : attribData) {
             double val = Double.valueOf(value);
