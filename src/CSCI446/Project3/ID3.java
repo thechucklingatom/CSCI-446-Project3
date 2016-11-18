@@ -7,10 +7,10 @@ import java.util.*;
  * Created by Alan Fraticelli on 11/11/2016.
  */
 public class ID3 {
-    private int foldToWrite;
+    //private int foldToWrite;
     private Writer writer;
     private DataContainer container;
-    private int currentFold;
+    //private int currentFold;
     private List<List<String>> trainingSet;
     private List<List<String>> trainingSetClass;
     private int testingFold;
