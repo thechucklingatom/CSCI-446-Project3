@@ -38,6 +38,74 @@ public class TAN {
 
     }
 
+    private void test() {
+        int correctGuess = 0;
+        for (int i = 0; i < dc.getDataFold().get(testingFold).size(); i++) {
+            String classGuess = "";
+            double probability = 1;
+            double guessProbability = 0;
+            for (String potentialClass : dc.getClassTypes()) {
+                for (int j = 0; j < dc.getDataFold().get(testingFold).get(i).size(); j++) {
+                    probability *= calculateProbability(potentialClass,
+                            dc.getDataFold().get(testingFold).get(i).get(j),
+                            j);
+                }
+
+                if (probability > guessProbability) {
+                    classGuess = potentialClass;
+                }
+            }
+
+            if (classGuess.equals(dc.getClassificationFold().get(testingFold).get(i))) {
+                System.out.println("Success");
+                correctGuess++;
+            }
+        }
+    }
+
+    public double calculateProbability(String classType, String attribute, int attributeIndex){
+        double probabilityOfClass = 1, probabilityOfAttribute = 1, probabilityOfAttributeGivenClass = 1;
+
+        int priorIndex = 0;
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes.get(i).equals(classType)) {
+                priorIndex = i;
+            }
+        }
+        probabilityOfClass = classPriors[priorIndex];
+        probabilityOfAttribute = getAttributeProbability(attribute, attributeIndex);
+
+        return probabilityOfClass * probabilityOfAttributeGivenClass / probabilityOfAttribute;
+    }
+
+    private double getAttributeProbability(String attribute, int attributeIndex){
+
+        Double value;
+        if(attribute.chars().allMatch(Character::isDigit) || attribute.contains(".")){
+            value = Double.valueOf(attribute);
+        }else{
+            value = (double) attribute.hashCode();
+        }
+        double totalSelectedAttribute = 0;
+        for(Bin bin : attribBins.get(attributeIndex)){
+            if(bin.binContains(value)){
+                totalSelectedAttribute = bin.getFreq();
+                break;
+            }
+        }
+
+        int totalAttributes = 0;
+        for(int i = 0; i < dc.getDataFold().size(); i++){
+            if(i == testingFold){
+                continue;
+            }else{
+                totalAttributes += dc.getDataFold().get(i).size();
+            }
+        }
+        return totalSelectedAttribute / totalAttributes;
+    }
+
+
     public void fillBins() {
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
         List<List<String>> tranData = dc.transposeList(currentData);
