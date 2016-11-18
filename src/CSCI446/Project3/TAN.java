@@ -3,6 +3,7 @@ package CSCI446.Project3;
 import java.io.Writer;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Mathew Gostnell on 11/17/2016.
@@ -23,9 +24,26 @@ public class TAN {
         /**
          * take all doubles for attributes and recalculate their values into discrete values
          */
-        int currentAttribute = 0;   // index tracks the current index we are discretizing
-        List<List<String>> currentData = dc.getDataFold().get(currentFold);
 
+        List<List<Integer>> discData = new ArrayList<>();
+
+        List<List<String>> currentData = dc.getDataFold().get(currentFold);
+        List<List<String>> tranData = dc.transposeList(currentData); // rows of attrib
+
+        for (int row = 0; row <= tranData.size(); row++) {
+            if (needsDiscretation(tranData.get(row))) {
+                discData.add(discretizeRow(tranData.get(row)));
+            }
+        }
+
+    }
+
+    private List<Integer> discretizeRow(List<String> rawData) {
+        List<Double> procData = new ArrayList<>();
+        for (String raw : rawData) {
+            procData.add(Double.valueOf(raw));
+        }
+        return null;    // filler for now
     }
 
     private boolean needsDiscretation(List<String> attribData) {
