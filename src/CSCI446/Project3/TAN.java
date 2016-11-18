@@ -13,6 +13,7 @@ public class TAN {
     private double[] classPriors;   // match a probability for a class in classes var
     private int documentedFold; // the nth fold we choose to log our decisions
     private int currentFold;    // used to grab fold that we are looking at currently
+    private int testingFold;
     private List<String> classes;
     private DataContainer dc;   // the container that holds our folds of data
     private Writer logger;      // logger used for testing and decision making
@@ -27,11 +28,26 @@ public class TAN {
         classPriors = new double[classes.size()];
     }
 
-    private void discretizeData() {
-        /**
-         * take all doubles for attributes and recalculate their values into discrete values
-         */
+    /**
+     * Trains the TAN on the data for everything except the testing
+     */
+    public void trainData() {
+        for (int i = 0; i < 10; i++) {
+            if (i == testingFold) {
+                continue;
+            } else {
+                currentFold = i;
+                buildPriors();
+                discretizeData();
 
+            }
+        }
+    }
+
+    /**
+     * Converts continuous values for attributes into discreet values
+     */
+    private void discretizeData() {
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
         List<List<String>> tranData = dc.transposeList(currentData); // rows of attrib
 
@@ -91,18 +107,18 @@ public class TAN {
         List<String> classList = classListHolder.get(currentFold);
         // track the total number of classes in this fold and their occurrences
         int totalClasses = classList.size();
-        int[] totalClassOccurence = new int[classes.size()];
-        // for each class occurrence, match it to a class and track its occurence
+        int[] totalClassOccurrence = new int[classes.size()];
+        // for each class occurrence, match it to a class and track its occurrence
         for (String className : classList) {
             for (int i = 0; i < classes.size(); i++) {
                 if (className.equals(classes.get(i))) {
-                    totalClassOccurence[i]++;
+                    totalClassOccurrence[i]++;
                 }
             }
         }
-        // divide a particular class occurence by total number of classes
+        // divide a particular class occurrence by total number of classes
         for (int i = 0; i < classPriors.length; i++) {
-            classPriors[i] = totalClassOccurence[i] / totalClasses;
+            classPriors[i] = totalClassOccurrence[i] / totalClasses;
         }
     }
 
