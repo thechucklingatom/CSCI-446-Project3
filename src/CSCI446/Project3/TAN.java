@@ -4,6 +4,7 @@ import java.io.Writer;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by Mathew Gostnell on 11/17/2016.
@@ -41,26 +42,57 @@ public class TAN {
     private void test() {
         int correctGuess = 0;
         for (int i = 0; i < dc.getDataFold().get(testingFold).size(); i++) {
+            // iterate through rows of data
             String classGuess = "";
-            double probability = 1;
-            double guessProbability = 0;
-            for (String potentialClass : dc.getClassTypes()) {
-                for (int j = 0; j < dc.getDataFold().get(testingFold).get(i).size(); j++) {
-                    probability *= calculateProbability(potentialClass,
-                            dc.getDataFold().get(testingFold).get(i).get(j),
-                            j);
-                }
+            List<String> potentialClasses = new ArrayList<>();
 
-                if (probability > guessProbability) {
-                    classGuess = potentialClass;
+            List<String> row = dc.getDataFold().get(testingFold).get(i);
+
+            for (int j = 0; j < row.size(); j++) {
+                String curAttrib = row.get(j);
+                double highProb = 0.0;
+                for (int k = 0; k < classes.size(); k++) {
+                    String classCheck = classes.get(k);
+                    double curProb = calculateProbability(classCheck, curAttrib, j);
+                    if (curProb > highProb) {
+                        highProb = curProb;
+                        classGuess = classCheck;
+                    }
                 }
+                potentialClasses.add(classGuess);
             }
+            classGuess
 
-            if (classGuess.equals(dc.getClassificationFold().get(testingFold).get(i))) {
-                System.out.println("Success");
-                correctGuess++;
+        }
+    }
+
+    private String getClassGuess(List<String> guesses) {
+        ArrayList<Integer> countGuesses = new ArrayList<>();
+        ArrayList<String> uniqueEntry = new ArrayList<>();
+        ArrayList<String> highCountGuess = new ArrayList<>();
+
+        for (String check : guesses) {
+            if (uniqueEntry.contains(check)) {
+                int sharedIndex = uniqueEntry.indexOf(check);
+                int oldVal = countGuesses.get(sharedIndex);
+                countGuesses.set(sharedIndex, oldVal+1);
+            } else {
+                countGuesses.add(1);
+                uniqueEntry.add(check);
             }
         }
+
+        int highestCount = 0;
+        for (int i = 0; i < uniqueEntry.size(); i++) {
+            if (countGuesses.get(i) > highestCount) {
+                highCountGuess.clear();
+                highCountGuess.add(uniqueEntry.get(i));
+            } else if (countGuesses.get(i) == highestCount) {
+                highCountGuess.add(uniqueEntry.get(i));
+            }
+        }
+        Random rng = new Random();
+        return highCountGuess.get(rng.nextInt(highCountGuess.size()));
     }
 
     public double calculateProbability(String classType, String attribute, int attributeIndex){
@@ -104,7 +136,6 @@ public class TAN {
         }
         return totalSelectedAttribute / totalAttributes;
     }
-
 
     public void fillBins() {
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
@@ -162,14 +193,17 @@ public class TAN {
             if (i == 0) {
                 // append bin with lowest possible value
                 binForThisAttr.add(new Bin(Double.MIN_VALUE, procData.get(i), i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             } else if (i == procData.size() - 1) {
                 // append bin with highest possible value
                 binForThisAttr.add(new Bin(procData.get(i), Double.MAX_VALUE, i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             } else {
                 // estimate the range of bin based on nearby points of data
                 double lowBound = (procData.get(i - 1) + procData.get(i)) / 2;
                 double highBound = (procData.get(i) + procData.get(i + 1)) / 2;
                 binForThisAttr.add(new Bin(lowBound, highBound, i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             }
         }
         return binForThisAttr;

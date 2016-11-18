@@ -9,9 +9,13 @@ class Tree {
 	private Node root;
 	private List<Node> children;
 
-	public Tree(){
-
+	public Tree(Node root){
+		this.root = root;
 	}
+
+	public void setRoot(Node root) { this.root = root;}
+
+	public Node getRoot() { return root;}
 
 	public void addChild(Node addNode){
 		children.add(addNode);
