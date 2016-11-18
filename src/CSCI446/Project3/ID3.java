@@ -16,7 +16,7 @@ public class ID3 {
     private List<List<String>> trainingSet;
     private int testingFold;
     private Tree tree;
-    private List<List<String>> binAtt;
+    private List<List<Bin>> binAtt;
 
     public ID3(Writer inWriter, DataContainer inContainer){
         this.writer = inWriter;
@@ -49,37 +49,23 @@ public class ID3 {
         }
     }
 
-    public void bin(List<String> inFold, int numBin){
+    public void bin(List<String> inAtt, int numBin){
         if(numBin <= 5){
 
         } else {
-            int max = findMax(inFold);
-            int min = findMin(inFold);
+            int max = findMax(inAtt);
+            int min = findMin(inAtt);
             int range = max - min;
             float binRange = range / 6;
             float lowDiv = min;
             float nextDiv = lowDiv + binRange;
-            List<Bin>
-
-            Bin bin1, bin2, bin3, bin4, bin5, bin6;
-            bin1 = new Bin(lowDiv, nextDiv, 1);
-            lowDiv = nextDiv;
-            nextDiv = nextDiv + binRange;
-            bin2 = new Bin(lowDiv, nextDiv, 2);
-            lowDiv = nextDiv;
-            nextDiv = nextDiv + binRange;
-            bin3 = new Bin(lowDiv, nextDiv, 3);
-            lowDiv = nextDiv;
-            nextDiv = nextDiv + binRange;
-            bin4 = new Bin(lowDiv, nextDiv, 4);
-            lowDiv = nextDiv;
-            nextDiv = nextDiv + binRange;
-            bin5 = new Bin(lowDiv, nextDiv, 5);
-            lowDiv = nextDiv;
-            nextDiv = nextDiv + binRange;
-            bin6 = new Bin(lowDiv, nextDiv, 6);
-
-            for(int i = 0; i < inFold.size(); i++){
+            List<Bin> bins = new ArrayList<>();
+            for(int i = 1; i < 7; i ++){
+                bins.add(new Bin(lowDiv, nextDiv, i));
+                lowDiv = nextDiv;
+                nextDiv = nextDiv + binRange;
+            }
+            for(int i = 0; i < inAtt.size(); i++){
 
             }
         }
