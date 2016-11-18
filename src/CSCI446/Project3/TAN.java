@@ -34,12 +34,12 @@ public class TAN {
         for (int row = 0; row <= tranData.size(); row++) {
             attribBins.add(discretizeRow(tranData.get(row)));
         }
-
     }
 
     private List<Bin> discretizeRow(List<String> rawData) {
         /**
-         * Takes the data and creates a bin that captures
+         * Takes the data and creates a bin that captures the attributes given
+         * This will handle:
          */
         List<Bin> binForThisAttr = new ArrayList<>();
         List<Double> procData = new ArrayList<>();
@@ -59,6 +59,7 @@ public class TAN {
         }
         Collections.sort(procData);
 
+        // generate bins based on Naive Estimator Process
         for (int i = 0; i < procData.size(); i++) {
             if (i == 0) {
                 // append bin with lowest possible value
@@ -67,36 +68,17 @@ public class TAN {
                 // append bin with highest possible value
                 binForThisAttr.add(new Bin(procData.get(i), Double.MAX_VALUE, i));
             } else {
-                // estimate the range of bin based on nearby
+                // estimate the range of bin based on nearby points of data
                 double lowBound = (procData.get(i - 1) + procData.get(i)) / 2;
                 double highBound = (procData.get(i) + procData.get(i + 1)) / 2;
                 binForThisAttr.add(new Bin(lowBound, highBound, i));
             }
         }
-
-        int test = 5 / 2;
-
-
         return binForThisAttr;
     }
 
-    @Deprecated // all attributes go through Naive Estimator process
-    private boolean needsDiscretation(List<String> attribData) {
-        for (String value : attribData) {
-            if (value.chars().allMatch(Character::isDigit)) {
+    public void buildPriors() {
 
-            }
-
-            double val = Double.valueOf(value);
-            int compare = (int) val;
-            if (compare != val) {
-                // our value wasn't an integer and contains floating point values
-                return true;
-            }
-        }
-        // every value was an integer
-        return false;
     }
-
 
 }
