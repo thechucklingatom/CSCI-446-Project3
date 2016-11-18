@@ -8,6 +8,7 @@ public class Bin {
     private final double maxValue;    // maximum value (exclusive) for this bin
     private final int binID;          // int used for the attribute associated with this bin
     private int freq;
+    private boolean isCont;
 
     public Bin(double minVale, double maxValue, int binID) {
         this.minValue = minVale;
@@ -26,4 +27,6 @@ public class Bin {
     public void incrementFreq(){freq++;}
     public int getFreq(){return freq;}
     public String getBranch(){return this.minValue + " to " + this.maxValue;}
+    public void setIsCont(boolean in){isCont = in;}
+    public boolean isCont(){return isCont;}
 }
