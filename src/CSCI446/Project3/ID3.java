@@ -126,14 +126,6 @@ public class ID3 {
         return answer;
     }
 
-   /* public char[] toChars(String inString){
-        String s = inString;
-        int l = s.length();
-        char[] chars = new char[l];
-        s.getChars(0, l, chars, l - 1);
-        return chars;
-    }*/
-
     //this is the actual recursive method to run ID3
     public void id3(){
 
