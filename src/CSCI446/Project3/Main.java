@@ -36,15 +36,7 @@ public class Main {
 
 		FileWriter fileWriter = null;
 
-		String outputFilePath = "runs" + File.separator + "knn.txt";
-
-
-			/*List<List<String>> data = container.getData();
-			List<String> classification = container.getClassification();
-
-			data.forEach(System.out::println);
-
-			classification.forEach(System.out::println);*/
+		String outputFilePath = "runs" + File.separator + "testRuns.txt";
 
 
 		try {
@@ -61,6 +53,9 @@ public class Main {
 				kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
 
 				kNearestNeighbor.classify();
+
+				NaiveBayes naiveBayes = new NaiveBayes(fileWriter, container);
+				naiveBayes.classify();
 			}
 		} catch (IOException ex) {
 			ex.printStackTrace();
