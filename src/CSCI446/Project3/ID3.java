@@ -74,7 +74,9 @@ public class ID3 {
             int i;
             bins.add(new Bin(Double.MIN_VALUE, stringHash.get(0), -1));
             for (i = 0; i <= stringHash.size(); i++) {
-                bins.add(new Bin(stringHash.get(i), stringHash.get(i + 1), i));
+                Bin binToAdd = new Bin(stringHash.get(i), stringHash.get(i + 1), i);
+                binToAdd.setIsCont(false);
+                bins.add(binToAdd);
             }
             bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
             //fill the bins
@@ -82,7 +84,7 @@ public class ID3 {
                 for (int j = 0; j < bins.size(); j++) {
                     if (bins.get(j).binContains((double) inAtt.get(x).hashCode()) && !inAtt.get(j).equals("?")) {
                         bins.get(j).incrementFreq();
-                        j = Integer.MAX_VALUE;
+                        continue;
                     }
                 }
             }
@@ -95,7 +97,9 @@ public class ID3 {
             float nextDiv = lowDiv + binRange;
             List<Bin> bins = new ArrayList<>();
             binAtt.add(bins);
-            bins.add(new Bin(Double.MIN_VALUE, lowDiv, -1));
+            Bin binToAdd = new Bin(Double.MIN_VALUE, lowDiv, -1);
+            binToAdd.setIsCont(true);
+            bins.add(binToAdd);
             for (int i = 0; i < MAX_NUM_BINS; i++) {
                 bins.add(new Bin(lowDiv, nextDiv, i));
                 lowDiv = nextDiv;
@@ -136,7 +140,7 @@ public class ID3 {
     }
 
     //this is the actual recursive method to run ID3
-    public Tree id3(List<List<String>> examples, List<String> exampleClass, List<Integer> attributes, List<List<Bin>> parentExamples, List<String> parentExClass) {
+    public Tree id3(List<List<Integer>> examples, List<String> exampleClass, List<Integer> attributes, List<List<Bin>> parentExamples, List<String> parentExClass) {
         Tree curTree;
         if(examples.isEmpty()){
             String maxString = pluralityValue(parentExClass);
@@ -193,7 +197,7 @@ public class ID3 {
         return true;
     }
 
-    public int bestAttribute(List<List<String>> examples, List<String> exampleClass, List<Integer> attributes){
+    public int bestAttribute(List<List<Integer>> examples, List<String> exampleClass, List<Integer> attributes){
         //iterate through our attributes and find their gain
         List<Double> attributeGain = new ArrayList<>();
         for(int i : attributes){
@@ -201,8 +205,13 @@ public class ID3 {
 
             //find entropy
             //find the examples where attribute i is set to x and store index into list
+            int[] binFreq = new int[binAtt.get(i).size()];
             for(int j = 0; j < examples.size(); j++){ //iterate through the rows
-
+                for(int k = 0; k < binFreq.length; k++) { //iterate through the bins of the attribute i
+                    if (binAtt.get(i).get(k).binContains(examples.get(j).get(i))){
+                        binFreq[k]++;
+                    }
+                }
             }
             double sum;
             //for(int j = 0; )
@@ -243,16 +252,17 @@ public class ID3 {
                 attributes.add(x);
                 x++;
             }
+            List<List<Integer>> binMap = makeBinMap(trainingSet);
             container.transposeList(trainingSet);
+            List<String> classCol = combineClassificationFolds(i);
 
-            tree = id3(trainingSet, combineClassificationFolds(i),attributes,null, null);
-            //then we prune (ugh)
+            tree = id3(binMap, classCol, attributes, null, null);
+            //then we prune
             //then we test (a run)
         }
     }
 
     public List<String> combineClassificationFolds(int i){
-        classification = container.getClassificationFold();
         List<String> combClass = new ArrayList<>();
         for(int j = 0; j < 10; j++){
             for(int k = 0; k < classification.get(j).size(); k++)
@@ -263,5 +273,32 @@ public class ID3 {
         return combClass;
     }
 
-    private List<List<>>
+    private List<List<Integer>> makeBinMap(List<List<String>> inSet){
+        List<List<Integer>> map = new ArrayList<>();
+        for(int i = 0; i < inSet.size(); i++){ //iterates attributes
+            for(int j = 0; j < inSet.get(i).size(); j++){ //iterates the row of the selected att
+                //differentiate what type of attribute this is, disc or cont
+                if(binAtt.get(i).get(0).isCont()){
+                    for(int k = 0; k < binAtt.get(i).size(); k++) { //iterate through the bins
+                        if(inSet.get(i).get(j).equals("?")) {
+                            map.get(i).set(j, -10);
+                        } else if (binAtt.get(i).get(k).binContains(Double.valueOf(inSet.get(i).get(j)))) {
+                            int binNum = binAtt.get(i).get(k).getBinID();
+                            map.get(i).set(j, binNum);
+                        }
+                    }
+                } else {
+                    for (int x = 0; x < binAtt.get(i).size(); x++) {
+                        if(inSet.get(i).get(j).equals("?")){
+                            map.get(i).set(j, -10);
+                        } else if (binAtt.get(i).get(x).binContains((double) inSet.get(i).get(j).hashCode())) {
+                            int binNum = binAtt.get(i).get(x).getBinID();
+                            map.get(i).set(j, binNum);
+                        }
+                    }
+                }
+            }
+        }
+        return map;
+    }
 }
