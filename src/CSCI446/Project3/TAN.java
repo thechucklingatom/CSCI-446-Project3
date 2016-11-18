@@ -162,14 +162,17 @@ public class TAN {
             if (i == 0) {
                 // append bin with lowest possible value
                 binForThisAttr.add(new Bin(Double.MIN_VALUE, procData.get(i), i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             } else if (i == procData.size() - 1) {
                 // append bin with highest possible value
                 binForThisAttr.add(new Bin(procData.get(i), Double.MAX_VALUE, i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             } else {
                 // estimate the range of bin based on nearby points of data
                 double lowBound = (procData.get(i - 1) + procData.get(i)) / 2;
                 double highBound = (procData.get(i) + procData.get(i + 1)) / 2;
                 binForThisAttr.add(new Bin(lowBound, highBound, i));
+                binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
             }
         }
         return binForThisAttr;
