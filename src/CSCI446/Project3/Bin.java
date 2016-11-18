@@ -13,6 +13,7 @@ public class Bin {
         this.minValue = minVale;
         this.maxValue = maxValue;
         this.binID = binID;
+        freq = 0;
     }
 
     public boolean binContains(double queryValue) {
