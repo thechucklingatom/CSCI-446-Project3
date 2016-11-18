@@ -28,7 +28,7 @@ public class ID3 {
 
     //takes in a transposed training set (to make rows  attributes) and bin it
     public void discretize(List<List<String>> inFold){
-        //iterationg through the attributes
+        //iterating through the attributes
         for(int i = 0; i < inFold.size(); i++){
             //we are going to determine the size of unique data of each attribute,
             //and bin the attributes with a max of 5 unique data
@@ -70,7 +70,14 @@ public class ID3 {
             }
             bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
             //fill the bins
-
+            for(int x = 0; x < inAtt.size(); x++){
+                for(int j = 0; j < bins.size(); j++){
+                    if(bins.get(j).binContains((double) inAtt.get(x).hashCode()) && !inAtt.get(j).equals("?")){
+                        bins.get(j).incrementFreq();
+                        j = Integer.MAX_VALUE;
+                    }
+                }
+            }
         } else {
             int max = findMax(inAtt);
             int min = findMin(inAtt);
@@ -88,7 +95,7 @@ public class ID3 {
             } bins.add(new Bin(lowDiv, Double.MAX_VALUE, MAX_NUM_BINS + 1));
             for(int i = 0; i < inAtt.size(); i++){
                 for(int j = 0; j < bins.size(); j++){
-                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !bins.get(j).equals("?")){
+                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !inAtt.get(j).equals("?")){
                         bins.get(j).incrementFreq();
                         j = Integer.MAX_VALUE;
                     }
@@ -134,6 +141,10 @@ public class ID3 {
 
     //this will be the method that mostly runs the algorithm, as it will perform our verification
     public void tenFold(){
-
+        //iterate which fold is currently the test set
+            //combine the training folds into one fold
+            //transpose that fold
+            //call discretize sending our fold
+            //then we learn.
     }
 }
