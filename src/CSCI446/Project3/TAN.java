@@ -78,7 +78,9 @@ public class TAN {
     }
 
     public void buildPriors() {
-
+        int totalClasses = 0;
+        int[] totalClassOccurence;
+        dc.getClassification();
     }
 
 }
