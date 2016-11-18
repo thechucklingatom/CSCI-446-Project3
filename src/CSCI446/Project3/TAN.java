@@ -44,7 +44,7 @@ public class TAN {
         List<Bin> binForThisAttr = new ArrayList<>();
         List<Double> procData = new ArrayList<>();
         // are we working with numbers or actual Strings
-        boolean isNumber = rawData.get(0).chars().allMatch(Character::isDigit);
+        boolean isNumber = (rawData.get(0).chars().allMatch(Character::isDigit) || rawData.get(0).contains("."));
         if (isNumber) {
             // convert strings into Double, add to data attributes
             for (String raw : rawData) {
