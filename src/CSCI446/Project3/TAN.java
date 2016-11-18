@@ -48,18 +48,17 @@ public class TAN {
         List<Bin> binForThisAttr = new ArrayList<>();
         List<Double> procData = new ArrayList<>();
         // are we working with numbers or actual Strings
-        boolean isNumber = (rawData.get(0).chars().allMatch(Character::isDigit) || rawData.get(0).contains("."));
-        if (isNumber) {
-            // convert strings into Double, add to data attributes
-            for (String raw : rawData) {
+        // convert strings into Double, add to data attributes
+        for (String raw : rawData) {
+            // check current attribute value for String type or floating point type
+            if ((rawData.get(0).chars().allMatch(Character::isDigit) || rawData.get(0).contains("."))) {
                 //convert number strings into Doubles, or strings into unique Doubles
                 procData.add(Double.valueOf(raw));
-            }
-        } else {
-            // convert Strings into unique integers, add to data attributes
-            for (String raw : rawData) {
+            } else {
+                // convert Strings into unique integers, add to data attributes
                 procData.add((double) raw.hashCode());
             }
+
         }
         Collections.sort(procData);
 
