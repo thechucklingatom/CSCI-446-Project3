@@ -25,4 +25,5 @@ public class Bin {
     public int getBinID() { return this.binID; }
     public void incrementFreq(){freq++;}
     public int getFreq(){return freq;}
+    public String getBranch(){return this.minValue + " to " + this.maxValue;}
 }

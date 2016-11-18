@@ -8,6 +8,7 @@ import java.util.List;
 class Tree {
 	private Node root;
 	private List<Node> children;
+	private List<Node> branches;
 
 	public Tree(Node root){
 		this.root = root;
@@ -24,4 +25,12 @@ class Tree {
 	public void removeChild(Node remNode){
 		children.remove(remNode);
 	}
+
+	public List<Node> getChildren(){return children;}
+
+	public void addBranch(Node addNode){branches.add(addNode);}
+
+	public void removeBranch(Node remNode){branches.remove(remNode);}
+
+	public List<Node> getBranches(){return branches;}
 }

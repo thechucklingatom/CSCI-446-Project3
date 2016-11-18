@@ -262,4 +262,6 @@ public class ID3 {
         }
         return combClass;
     }
+
+    private List<List<>>
 }
