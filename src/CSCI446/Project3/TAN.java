@@ -56,6 +56,7 @@ public class TAN {
                         "Generating Completed Graph...\nWeighting Edges...\n");
             }
             discretizeData();
+            test();
         }
 
     }
