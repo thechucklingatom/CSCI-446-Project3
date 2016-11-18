@@ -371,9 +371,9 @@ public class NaiveBayes {
 				//if it has a higher probability than the last probability calculated swap the guess
 				if(probability > guessProbability){
 					classGuess = potentialClass;
-				}
+				}  // end if
 				probability = 1;
-			}
+			} // end for
 
 			//check if it was correct.
 			if(classGuess.equals(dataContainer.getClassificationFold().get(testingFold).get(i))){
