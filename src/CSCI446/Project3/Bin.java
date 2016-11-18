@@ -5,7 +5,7 @@ package CSCI446.Project3;
  */
 public class Bin {
     private final double minValue;    // minimum value (inclusive) for this bin
-    private final double maxValue;    // maximum value (inclusive) for this bin
+    private final double maxValue;    // maximum value (exclusive) for this bin
     private final int binID;          // int used for the attribute associated with this bin
 
     public Bin(double minVale, double maxValue, int binID) {
@@ -15,7 +15,7 @@ public class Bin {
     }
 
     public boolean binContains(double queryValue) {
-        return minValue <= queryValue && queryValue <= maxValue;
+        return minValue <= queryValue && queryValue < maxValue;
     }
 
     public double getMinValue() { return this.minValue; }

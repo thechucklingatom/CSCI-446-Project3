@@ -52,6 +52,9 @@ public class Main {
 			fileWriter = new FileWriter(outputFilePath);
 			for (int i = 0; i < fileNameList.size(); i++) {
 
+				fileWriter.append("Analyzing ");
+				fileWriter.append(fileNameList.get(i));
+				fileWriter.append("\n");
 				DataContainer container = new DataContainer();
 				container.populateData(fileNameList.get(i), classificationLocationList.get(i));
 

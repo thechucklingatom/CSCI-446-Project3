@@ -56,7 +56,7 @@ class kNearestNeighbor {
 	 *                        that point.
 	 * @return A list of the of the of the distances and their corresponding indices.
 	 */
-	List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
+	private List<String> getNearestNeighborsClassification(List<DistanceIndex> distanceIndices) {
 		//list of neighbors classes to return
 		ArrayList<String> toReturn = new ArrayList<>();
 		//sort the distances to make the smallest at the beginning and largest at the end.
@@ -92,7 +92,7 @@ class kNearestNeighbor {
 	 * @param index the index of the point you want to find all the distances from.
 	 * @return the List of the distances and the corresponding indices that go with that distance.
 	 */
-	List<DistanceIndex> getNearestNeighbors(int index) {
+	private List<DistanceIndex> getNearestNeighbors(int index) {
 		//again if the fold is the one we have designated to writing. output what neighbor we are
 		//trying to find.
 		if (foldToWrite == currentFold) {
@@ -114,6 +114,7 @@ class kNearestNeighbor {
 
 		//go through the list and calculate all the distances.
 		for (int i = 0; i < currentFoldList.size(); i++) {
+			//skip it if it is the same point.
 			if (i == index) {
 				continue;
 			}
@@ -124,36 +125,51 @@ class kNearestNeighbor {
 			toReturn.add(temp);
 		}
 
-
 		return toReturn;
 	}
 
-	double calculateDistance(List<String> point1, List<String> point2) {
+	/**
+	 * Calculates the distance between two points. Uses Minkowski distance.
+	 * @param point1 The first point.
+	 * @param point2 The second point
+	 * @return The Distance between the two points.
+	 */
+	private double calculateDistance(List<String> point1, List<String> point2) {
 		double distance = 0;
+		//calculate the distance for each attribute
 		for (int i = 0; i < point1.size() && i < point2.size(); i++) {
 			//Minkowski Distance
 			String point1CurrentValue = point1.get(i);
 			String point2CurrentValue = point2.get(i);
 
+			//if the data is missing it treat it as a 0 in that dimension
 			point1CurrentValue = point1CurrentValue.equals("?") ? "0" : point1CurrentValue;
 			point2CurrentValue = point2CurrentValue.equals("?") ? "0" : point2CurrentValue;
 
 			try {
+				//if numerical data calculate the distance normally.
 				distance += Math.pow(
 						Double.valueOf(point1CurrentValue) - Double.valueOf(point2CurrentValue), point1.size());
 			} catch (NumberFormatException ex) {
+				//other wise use the byte value of the string itself
 				distance += Math.pow(
 						(int) point1.get(i).charAt(0) - (int) point2.get(i).charAt(0), point1.size());
 			}
 
 		}
 
+		//take the nth root
 		distance = Math.pow(Math.abs(distance), 1.0 / point1.size());
 
 		return distance;
 	}
 
-	String getClassification(List<String> possibleClasses) {
+	/**
+	 * Calculate the most common class
+	 * @param possibleClasses The list of possible classes by the neighbor.
+	 * @return The class guess based on the neighbors
+	 */
+	private String getClassification(List<String> possibleClasses) {
 		for (String classification : possibleClasses) {
 			if (classCounter.containsKey(classification)) {
 				classCounter.put(classification, classCounter.get(classification) + 1);
@@ -164,6 +180,7 @@ class kNearestNeighbor {
 
 		String toReturn = "";
 
+		//count how many times each class shows up in those neighbors
 		for (String classes : classCounter.keySet()) {
 			if (toReturn.isEmpty()) {
 				toReturn = classes;
@@ -177,12 +194,17 @@ class kNearestNeighbor {
 			}
 		}
 
+		//writing if in the correct fold
 		if (foldToWrite == currentFold) {
 			try {
 				fileOutput.append("Calculating highest probable class");
 				fileOutput.append(classCounter.toString());
 				fileOutput.append("\nGuessing ");
 				fileOutput.append(toReturn);
+				fileOutput.append(" with ");
+				fileOutput.append(String.valueOf(Double.valueOf(classCounter.get(toReturn)) /
+						(double) possibleClasses.size()));
+				fileOutput.append(" certainty.");
 				fileOutput.append("\n");
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -190,17 +212,35 @@ class kNearestNeighbor {
 			}
 		}
 
+		//empty object for the next go around
 		classCounter.clear();
 
+		//return the highest probable class
 		return toReturn;
 	}
 
+	/**
+	 * classify all the data.
+	 */
 	void classify() {
+
+		try {
+			fileOutput.append("k-nearest-neighbors classification");
+			fileOutput.append("\n");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			System.out.println("error printing in classify");
+		}
+
+		//for every fold
 		for (int i = 0; i < dataContainer.getDataFold().size(); i++) {
+			//go through all the data
 			for (int j = 0; j < dataContainer.getDataFold().get(i).size(); j++) {
+				//try to classify it based off its neighbor
 				String guess =
 						getClassification(getNearestNeighborsClassification(getNearestNeighbors(j)));
 
+				//if outputting data
 				if (foldToWrite == currentFold) {
 					try {
 						fileOutput.append("Guess :");
@@ -214,8 +254,10 @@ class kNearestNeighbor {
 					}
 				}
 
+				//if it is correct it classified it correctly. Log that
 				if (dataContainer.getClassificationFold().get(i).get(j).equals(guess)) {
 					correct++;
+					//print if outputting.
 					if (foldToWrite == currentFold) {
 						try {
 							fileOutput.append("Correct guess! Total number of correct guesses ");
@@ -231,7 +273,7 @@ class kNearestNeighbor {
 						}
 					}
 				} else {
-
+					//it was incorrect, print that if fold to print
 					if (foldToWrite == currentFold) {
 						try {
 							fileOutput.append("Incorrect guess. Total number of correct guesses ");
@@ -248,7 +290,9 @@ class kNearestNeighbor {
 					}
 				}
 			}
+			//move to the next fold
 			currentFold++;
+			//reset the count of the correct classifications
 			correct = 0;
 		}
 	}
