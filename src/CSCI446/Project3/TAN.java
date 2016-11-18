@@ -14,6 +14,7 @@ public class TAN {
     private int currentFold;    // used to grab fold that we are looking at currently
     private DataContainer dc;   // the container that holds our folds of data
     private Writer logger;      // logger used for testing and decision making
+    private List<List<Bin>> attribBins;
 
     public TAN(DataContainer dc, Writer logger) {
         this.dc = dc;
@@ -32,18 +33,36 @@ public class TAN {
 
         for (int row = 0; row <= tranData.size(); row++) {
             if (needsDiscretation(tranData.get(row))) {
-                discData.add(discretizeRow(tranData.get(row)));
+                attribBins.add(discretizeRow(tranData.get(row)));
             }
         }
 
     }
 
-    private List<Integer> discretizeRow(List<String> rawData) {
+    private List<Bin> discretizeRow(List<String> rawData) {
+        List<Bin> binForThisAttr = new ArrayList<>();
         List<Double> procData = new ArrayList<>();
         for (String raw : rawData) {
+            //convert string data into double data
             procData.add(Double.valueOf(raw));
         }
-        return null;    // filler for now
+        Collections.sort(procData);
+
+        for (int i = 0; i < procData.size(); i++){
+            if (i == 0) {
+                // append bin with lowest possible value
+                binForThisAttr.add(new Bin(Double.MIN_VALUE, procData.get(i), i));
+            } else if (i == procData.size() - 1) {
+                // append bin with highest possible value
+                binForThisAttr.add(new Bin(procData.get(i), Double.MAX_VALUE, i));
+            } else {
+                double lowBound = (procData.get(i-1) + procData.get(i)) / 2;
+                double highBound = (procData.get(i) + procData.get(i+1)) / 2;
+                binForThisAttr.add(new Bin(lowBound, highBound, i));
+            }
+        }
+
+        return binForThisAttr;
     }
 
     private boolean needsDiscretation(List<String> attribData) {
