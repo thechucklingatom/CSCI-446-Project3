@@ -201,20 +201,41 @@ public class ID3 {
         //iterate through our attributes and find their gain
         List<Double> attributeGain = new ArrayList<>();
         for(int i : attributes){
-            //collect data on this attribute: total size, the unique classes
-
+            //gather unique classes
+            List<String> uniqueClass = new ArrayList<>();
+            for(String s : exampleClass){
+                if(!uniqueClass.contains(s)){
+                    uniqueClass.add(s);
+                }
+            }
+            //create a list to gather the freq of a unique class per bin
+            List<Integer> classFreq = new ArrayList<>();
+            //populate for increment purposes
+            for(int y = 0; y < binAtt.get(i).size(); y++){
+                classFreq.add(0);
+            }
             //find entropy
             //find the examples where attribute i is set to x and store index into list
             int[] binFreq = new int[binAtt.get(i).size()];
             for(int j = 0; j < examples.size(); j++){ //iterate through the rows
                 for(int k = 0; k < binFreq.length; k++) { //iterate through the bins of the attribute i
-                    if (binAtt.get(i).get(k).binContains(examples.get(j).get(i))){
+                    if (binAtt.get(i).get(k).getBinID() == examples.get(j).get(i)){
                         binFreq[k]++;
+                        int oldVal = classFreq.get(k);
+                        classFreq.set(k, oldVal++);
                     }
                 }
+            } //we now have freq of classes for each value of attribute i
+            double sum = 0;
+            int denominator = 0;
+            for(int j = 0; j < uniqueClass.size(); j++){ //iterate through the j classes we have
+                denominator = denominator + classFreq.get(j);
             }
-            double sum;
-            //for(int j = 0; )
+            for(int j = 0; j < uniqueClass.size(); j++){ //sum over j classes
+                int numerator = classFreq.get(j);
+                double term = (numerator/denominator) * (Math.log(2) / Math.log(numerator/denominator));
+                sum = sum + term;
+            }
             //find remain
             //find entropy - remain, or gain
         }
