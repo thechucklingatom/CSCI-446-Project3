@@ -60,19 +60,23 @@ public class ID3 {
             float lowDiv = min;
             float nextDiv = lowDiv + binRange;
             List<Bin> bins = new ArrayList<>();
+            binAtt.add(bins);
             for(int i = 1; i < 7; i ++){
                 bins.add(new Bin(lowDiv, nextDiv, i));
                 lowDiv = nextDiv;
                 nextDiv = nextDiv + binRange;
             }
             for(int i = 0; i < inAtt.size(); i++){
-
+                String curValue = inAtt.get(i);
+                int l = curValue.length();
+                char[] chars = new char[l];
+                curValue.getChars(0, l, chars, l - 1);
             }
         }
     }
 
     public int findMax(List<String> inAtt){
-        int answer = -1000000000;
+        int answer = Integer.MIN_VALUE;
         for(int i = 0; i < inAtt.size(); i++){
             int curNum = Integer.getInteger(inAtt.get(i));
             if(curNum > answer){
@@ -83,7 +87,7 @@ public class ID3 {
     }
 
     public int findMin(List<String> inAtt){
-        int answer = 1000000000;
+        int answer = Integer.MAX_VALUE;
         for(int i = 0; i < inAtt.size(); i++){
             int curNum = Integer.getInteger(inAtt.get(i));
             if(curNum < answer){
