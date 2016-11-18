@@ -223,6 +223,15 @@ class kNearestNeighbor {
 	 * classify all the data.
 	 */
 	void classify() {
+
+		try {
+			fileOutput.append("k-nearest-neighbors classification");
+			fileOutput.append("\n");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			System.out.println("error printing in classify");
+		}
+
 		//for every fold
 		for (int i = 0; i < dataContainer.getDataFold().size(); i++) {
 			//go through all the data
