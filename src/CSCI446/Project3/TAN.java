@@ -1,5 +1,6 @@
 package CSCI446.Project3;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 import java.util.ArrayList;
@@ -26,30 +27,51 @@ public class TAN {
         attribBins = new ArrayList<>();
         classes = dc.getClassTypes();
         classPriors = new double[classes.size()];
+
+        try {
+            trainData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Trains the TAN on the data for everything except the testing
      */
-    public void trainData() {
+    public void trainData() throws IOException {
         for (int i = 0; i < 10; i++) {
-            if ()
             testingFold = i;
+
+            if (testingFold == writingFold) {
+                logger.append("Training Tree-Augmented Naive Bayes for writing Fold");
+            }
+
+            if (testingFold == writingFold) {
+                logger.append("Calculating Class Priors across Data set.\n");
+            }
             buildPriors();
+
+            if (testingFold == writingFold) {
+                logger.append("Priors built.\n  Discretizing data into Naive Bin Estimator...\n" +
+                        "Generating Completed Graph...\nWeighting Edges...\n");
+            }
             discretizeData();
         }
 
     }
 
-    private void test() {
+    private void test() throws IOException {
         int correctGuess = 0;
+        int totalGuesses = 0;
         for (int i = 0; i < dc.getDataFold().get(testingFold).size(); i++) {
+            logger.append("Maximum Spanning Tree generated...\n");
             // iterate through rows of data
             String classGuess = "";  // store our guess from Node(class | attribute)
             List<String> potentialClasses = new ArrayList<>(); // leaf Nodes that have high probability
             // grab our testing data to begin testing
             List<String> row = dc.getDataFold().get(testingFold).get(i);
             // for each row in the testing fold ...
+            logger.append("Traversing MST to find Class Leaf Nodes...\n");
             for (int j = 0; j < row.size(); j++) {
                 // grab the current attribute value
                 String curAttrib = row.get(j);
@@ -73,9 +95,12 @@ public class TAN {
             classGuess = getClassGuess(potentialClasses);
             if (classGuess.equals(dc.getClassificationFold().get(testingFold).get(i))) {
                 correctGuess += 1;
-
+                logger.append("Correct Classification!\n");
+            } else {
+                logger.append("Incorrect Classification.\n");
             }
         }
+
     }
 
     /**
