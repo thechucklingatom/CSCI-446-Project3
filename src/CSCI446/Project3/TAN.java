@@ -10,8 +10,10 @@ import java.util.Collections;
  */
 public class TAN {
 
+    private double[] classPriors;   // match a probability for a class in classes var
     private int documentedFold; // the nth fold we choose to log our decisions
     private int currentFold;    // used to grab fold that we are looking at currently
+    private List<String> classes;
     private DataContainer dc;   // the container that holds our folds of data
     private Writer logger;      // logger used for testing and decision making
     private List<List<Bin>> attribBins;
@@ -21,6 +23,8 @@ public class TAN {
         this.logger = logger;
         this.currentFold = currentFold;
         attribBins = new ArrayList<>();
+        classes = dc.getClassTypes();
+        classPriors = new double[classes.size()];
     }
 
     private void discretizeData() {
@@ -78,7 +82,25 @@ public class TAN {
     }
 
     public void buildPriors() {
-
+        // grab the list of all class labels for this fold
+        List<List<String>> classListHolder = dc.getClassificationFold();
+        // grab the list of all classes for this current fold
+        List<String> classList = classListHolder.get(currentFold);
+        // track the total number of classes in this fold and their occurrences
+        int totalClasses = classList.size();
+        int[] totalClassOccurence = new int[classes.size()];
+        // for each class occurrence, match it to a class and track its occurence
+        for (String className : classList) {
+            for (int i = 0; i < classes.size(); i++) {
+                if (className.equals(classes.get(i))) {
+                    totalClassOccurence[i]++;
+                }
+            }
+        }
+        // divide a particular class occurence by total number of classes
+        for (int i = 0; i < classPriors.length; i++) {
+            classPriors[i] = totalClassOccurence[i] / totalClasses;
+        }
     }
 
 }
