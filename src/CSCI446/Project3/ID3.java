@@ -83,67 +83,87 @@ public class ID3 {
 		}
 	}
 
-	public void bin(List<String> inAtt, int numBin) {
-		if (numBin <= 5) {
-			List<Bin> bins = new ArrayList<>();
-			binAtt.add(bins);
-			//obtain a list of the unique values in this attribute
-			List<String> uniqueValue = new ArrayList<>();
-			for (String s : inAtt) {
-				if (!uniqueValue.contains(s)) {
-					uniqueValue.add(s);
-				}
-			}
-			//create the unique doubles that will bound our bins
-			List<Double> stringHash = new ArrayList<>();
-			for (String s : uniqueValue) {
-				stringHash.add((double) s.hashCode());
-			} //create the bins
-			int i;
-			bins.add(new Bin(Double.MIN_VALUE, stringHash.get(0), -1));
-			for (i = 0; i < stringHash.size(); i++) {
-				Bin binToAdd = new Bin(stringHash.get(i), i + 1 == stringHash.size() ? Double.MAX_VALUE : stringHash.get(i + 1), i);
-				binToAdd.setIsCont(false);
-				bins.add(binToAdd);
-			}
-			//bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
-			//fill the bins
-			for (int x = 0; x < inAtt.size(); x++) {
-				for (int j = 0; j < bins.size(); j++) {
-					if (bins.get(j).binContains((double) inAtt.get(x).hashCode()) && !inAtt.get(j).equals("?")) {
-						bins.get(j).incrementFreq();
-						continue;
-					}
-				}
-			}
-		} else {
-			int max = findMax(inAtt);
-			int min = findMin(inAtt);
-			int range = max - min;
-			float binRange = range / MAX_NUM_BINS;
-			float lowDiv = min;
-			float nextDiv = lowDiv + binRange;
-			List<Bin> bins = new ArrayList<>();
-			binAtt.add(bins);
-			Bin binToAdd = new Bin(Double.MIN_VALUE, lowDiv, -1);
-			binToAdd.setIsCont(true);
-			bins.add(binToAdd);
-			for (int i = 0; i < MAX_NUM_BINS; i++) {
-				bins.add(new Bin(lowDiv, nextDiv, i));
-				lowDiv = nextDiv;
-				nextDiv = nextDiv + binRange;
-			}
-			bins.add(new Bin(lowDiv, Double.MAX_VALUE, MAX_NUM_BINS + 1));
-			for (int i = 0; i < inAtt.size(); i++) {
-				for (int j = 0; j < bins.size(); j++) {
-					if (bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !inAtt.get(i).equals("?")) {
-						bins.get(j).incrementFreq();
-						break;
-					}
-				}
-			}
-		}
-	}
+    public void bin(List<String> inAtt, int numBin) {
+        try{
+            writer.append(" Attribute has " + numBin + " bins\n");
+        } catch(IOException x){}
+        if (numBin <= 5) { //we are going to create bins that will hold only one value, this is where attributes with type String get caught
+            //create a list to hold the bins we are about to create for the attribute
+            List<Bin> bins = new ArrayList<>();
+            //add this list to the list that holds the lists of bins
+            binAtt.add(bins);
+            //obtain a list of the unique values in this attribute
+            List<String> uniqueValue = new ArrayList<>();
+            for(String s : inAtt){ //iterate through the attribute to find a data value s
+                //only add to uniqueValue if the s value is not currently in the list
+                if(!uniqueValue.contains(s)){
+                    try{
+                        writer.append("     Found unique value for attribute: " + s + "\n");
+                    } catch(IOException x){}
+                    uniqueValue.add(s);
+                }
+            }
+            //create the unique doubles that will bound our bins
+            List<Double> stringHash = new ArrayList<>();
+            for (String s : uniqueValue) { //iterate through our unique values
+                double hash = (double) s.hashCode();
+                stringHash.add(hash);
+                try{
+                    writer.append("     Hash for " + s + " is " + hash + " \n");
+                } catch(IOException x){}
+            } //create the bins
+            int i;
+            //create the lowest bin that catches any value lower than what's in the training data
+            bins.add(new Bin(Double.MIN_VALUE, stringHash.get(0), -1));
+            try{
+                writer.append("     Bin made from minimum double value to " + stringHash.get(0) + "\n");
+            } catch(IOException x){}
+            for (i = 0; i <= stringHash.size(); i++) {
+                Bin binToAdd = new Bin(stringHash.get(i), stringHash.get(i + 1), i);
+                binToAdd.setIsCont(false);
+                bins.add(binToAdd);
+                try{
+                    writer.append("    Bin made from " + stringHash.get(i) + " to " + stringHash.get(i=1) + "\n");
+                } catch(IOException x){}
+            }
+            bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
+            //fill the bins
+            for (int x = 0; x < inAtt.size(); x++) {
+                for (int j = 0; j < bins.size(); j++) {
+                    if (bins.get(j).binContains((double) inAtt.get(x).hashCode()) && !inAtt.get(j).equals("?")) {
+                        bins.get(j).incrementFreq();
+                        continue;
+                    }
+                }
+            }
+        } else {
+            int max = findMax(inAtt);
+            int min = findMin(inAtt);
+            int range = max - min;
+            float binRange = range / MAX_NUM_BINS;
+            float lowDiv = min;
+            float nextDiv = lowDiv + binRange;
+            List<Bin> bins = new ArrayList<>();
+            binAtt.add(bins);
+            Bin binToAdd = new Bin(Double.MIN_VALUE, lowDiv, -1);
+            binToAdd.setIsCont(true);
+            bins.add(binToAdd);
+            for (int i = 0; i < MAX_NUM_BINS; i++) {
+                bins.add(new Bin(lowDiv, nextDiv, i));
+                lowDiv = nextDiv;
+                nextDiv = nextDiv + binRange;
+            }
+            bins.add(new Bin(lowDiv, Double.MAX_VALUE, MAX_NUM_BINS + 1));
+            for (int i = 0; i < inAtt.size(); i++) {
+                for (int j = 0; j < bins.size(); j++) {
+                    if (bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !inAtt.get(j).equals("?")) {
+                        bins.get(j).incrementFreq();
+                        j = Integer.MAX_VALUE;
+                    }
+                }
+            }
+        }
+    }
 
 	public int findMax(List<String> inAtt) {
 		int answer = Integer.MIN_VALUE;
