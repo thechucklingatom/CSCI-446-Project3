@@ -7,6 +7,7 @@ public class Bin {
     private final double minValue;    // minimum value (inclusive) for this bin
     private final double maxValue;    // maximum value (exclusive) for this bin
     private final int binID;          // int used for the attribute associated with this bin
+    private int freq;
 
     public Bin(double minVale, double maxValue, int binID) {
         this.minValue = minVale;
@@ -21,4 +22,6 @@ public class Bin {
     public double getMinValue() { return this.minValue; }
     public double getMaxValue() { return this.maxValue; }
     public int getBinID() { return this.binID; }
+    public void incrementFreq(){freq++;}
+    public int getFreq(){return freq;}
 }
