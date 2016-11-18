@@ -15,7 +15,7 @@ public class ID3 {
     private List<List<String>> trainingSetClass;
     private int testingFold;
     private Tree tree;
-    private List<List<Bin>> binAtt;
+    private List<List<Bin>> binAtt; //first list reps the attributes, second list the bins of those atts
     private List<List<String>> classification;
     private List<String> classTypes;
     private final int MAX_NUM_BINS = 6;
