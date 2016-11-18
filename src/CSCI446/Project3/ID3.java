@@ -1,5 +1,7 @@
 package CSCI446.Project3;
 
+import java.io.IOError;
+import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 
@@ -13,7 +15,7 @@ public class ID3 {
     //private int currentFold;
     private List<List<String>> trainingSet;
     private List<List<String>> trainingSetClass;
-    private int testingFold;
+    //private int testingFold;
     private Tree tree;
     private List<List<Bin>> binAtt; //first list reps the attributes, second list the bins of those atts
     private List<List<String>> classification;
@@ -32,10 +34,21 @@ public class ID3 {
     //takes in a transposed training set (to make rows  attributes) and bin it
     public void discretize(List<List<String>> inFold) {
         //iterating through the attributes
+        try{
+            writer.append("ID3 Discretizing:\n");
+        } catch (IOException x){}
         for (int i = 0; i < inFold.size(); i++) {
             //we are going to determine the size of unique data of each attribute,
             //and bin the attributes with a max of 5 unique data
+            try{
+                writer.append(" Calculating number of bins for attribute " + i + ":\n");
+            } catch (IOException x){}
+            //find out how many bins we
             int numBin = findNumBin(inFold.get(i));
+            try{
+                writer.append(" Give our bins bounds and ID numbers. \n");
+            } catch(IOException x){}
+            //this will generate the bins for an attribute and "fill" them with a frequency value
             bin(inFold.get(i), numBin);
         }
     }
@@ -43,15 +56,24 @@ public class ID3 {
     public int findNumBin(List<String> inFold) {
         int answer = 0;
         HashSet noDupes = new HashSet();
-        for (int j = 0; j < inFold.size(); j++) {
-            if (!inFold.get(j).equals("?")) {
+        for (int j = 0; j < inFold.size(); j++) { //iterate through an attribute and develope a distinct HashSet with the values
+            if (!inFold.get(j).equals("?")) { //make sure we are not adding a question mark to our HashSet
+                //a HashSet only adds distinct values, so only fills with unique values
                 noDupes.add(inFold.get(j));
             }
         }
-        if (noDupes.size() <= 5) {
+        //we want to keep the amount of possible values for an attribute low, so we set a max value and hard set it
+        //to that max value if it goes over. This prevents continuous data from generating giant amounts of branches and children
+        if (noDupes.size() <= MAX_NUM_BINS - 1) {
+            try{
+                writer.append("     Found " + answer + " unique values for the attribute\n");
+            } catch(IOException x){}
             return answer;
         } else {
-            return 6;
+            try{
+                writer.append("     Found over " + MAX_NUM_BINS + " unique values for the attribute. Setting number of bins to " + MAX_NUM_BINS + "\n");
+            } catch(IOException x){}
+            return MAX_NUM_BINS;
         }
     }
 
