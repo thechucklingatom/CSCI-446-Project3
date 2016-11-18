@@ -17,6 +17,7 @@ public class ID3 {
     private int testingFold;
     private Tree tree;
     private List<List<Bin>> binAtt;
+    private final int MAX_NUM_BINS = 6;
 
     public ID3(Writer inWriter, DataContainer inContainer){
         this.writer = inWriter;
@@ -40,7 +41,9 @@ public class ID3 {
         int answer = 0;
         HashSet noDupes = new HashSet();
         for (int j = 0; j < inFold.size(); j++) {
-            noDupes.add(inFold.get(j));
+            if(!inFold.get(j).equals("?")) {
+                noDupes.add(inFold.get(j));
+            }
         }
         if (noDupes.size() <= 5){
             return answer;
@@ -51,26 +54,45 @@ public class ID3 {
 
     public void bin(List<String> inAtt, int numBin){
         if(numBin <= 5){
+            List<Bin> bins = new ArrayList<>();
+            binAtt.add(bins);
+            //obtain a list of the unique values in this attribute
+            List<String> uniqueValue = new ArrayList<>();
+            //create the unique doubles that will bound our bins
+            List<Double> stringHash = new ArrayList<>();
+            for(String s : uniqueValue) {
+                stringHash.add((double) s.hashCode());
+            } //create the bins
+            int i;
+            bins.add(new Bin(Double.MIN_VALUE, stringHash.get(0), -1));
+            for(i = 0; i <= stringHash.size(); i++){
+                bins.add(new Bin(stringHash.get(i), stringHash.get(i+1), i));
+            }
+            bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
+            //fill the bins
 
         } else {
             int max = findMax(inAtt);
             int min = findMin(inAtt);
             int range = max - min;
-            float binRange = range / 6;
+            float binRange = range / MAX_NUM_BINS;
             float lowDiv = min;
             float nextDiv = lowDiv + binRange;
             List<Bin> bins = new ArrayList<>();
             binAtt.add(bins);
-            for(int i = 1; i < 7; i ++){
+            bins.add(new Bin(Double.MIN_VALUE, lowDiv, -1));
+            for(int i = 0; i < MAX_NUM_BINS; i ++){
                 bins.add(new Bin(lowDiv, nextDiv, i));
                 lowDiv = nextDiv;
                 nextDiv = nextDiv + binRange;
-            }
+            } bins.add(new Bin(lowDiv, Double.MAX_VALUE, MAX_NUM_BINS + 1));
             for(int i = 0; i < inAtt.size(); i++){
-                String curValue = inAtt.get(i);
-                int l = curValue.length();
-                char[] chars = new char[l];
-                curValue.getChars(0, l, chars, l - 1);
+                for(int j = 0; j < bins.size(); j++){
+                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !bins.get(j).equals("?")){
+                        bins.get(j).incrementFreq();
+                        j = Integer.MAX_VALUE;
+                    }
+                }
             }
         }
     }
@@ -97,11 +119,20 @@ public class ID3 {
         return answer;
     }
 
+   /* public char[] toChars(String inString){
+        String s = inString;
+        int l = s.length();
+        char[] chars = new char[l];
+        s.getChars(0, l, chars, l - 1);
+        return chars;
+    }*/
+
     //this is the actual recursive method to run ID3
     public void id3(){
 
     }
 
+    //this will be the method that mostly runs the algorithm, as it will perform our verification
     public void tenFold(){
 
     }

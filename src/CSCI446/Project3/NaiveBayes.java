@@ -19,10 +19,35 @@ public class NaiveBayes {
 		this.writer = writer;
 		this.dataContainer = dataContainer;
 		testingFold = 9;
+		attribBins = new ArrayList<>();
+	}
+
+	private double getClassProbability(String classType){
+		double classCount = 0;
+		double totalNumberOfClasses = 0;
+		for(int i = 0; i < dataContainer.getClassificationFold().size(); i++){
+			if(i == testingFold){
+				continue;
+			}
+			for(int j = 0; j < dataContainer.getClassificationFold().get(i).size(); j++){
+				if(dataContainer.getClassificationFold().get(i).get(j).equals(classType)){
+					classCount++;
+				}
+				totalNumberOfClasses++;
+			}
+		}
+
+		return classCount / totalNumberOfClasses;
+	}
+
+	private double getAttributeProbability(String attribute){
+		return 0;
 	}
 
 	public double calculateProbability(String classType, String attribute){
 		double probabilityOfClass = 1, probabilityOfAttribute = 1, probabilityOfAttributeGivenClass = 1;
+
+		probabilityOfClass = getClassProbability(classType);
 
 		return probabilityOfClass * probabilityOfAttributeGivenClass / probabilityOfAttribute;
 	}
@@ -35,7 +60,7 @@ public class NaiveBayes {
 		List<List<String>> currentData = dataContainer.getDataFold().get(currentFold);
 		List<List<String>> tranData = dataContainer.transposeList(currentData); // rows of attrib
 
-		for (int row = 0; row <= tranData.size(); row++) {
+		for (int row = 0; row < tranData.size(); row++) {
 			attribBins.add(discretizeRow(tranData.get(row)));
 		}
 
@@ -49,18 +74,18 @@ public class NaiveBayes {
 		List<Bin> binForThisAttr = new ArrayList<>();
 		List<Double> procData = new ArrayList<>();
 		// are we working with numbers or actual Strings
-		boolean isNumber = (rawData.get(0).chars().allMatch(Character::isDigit) || rawData.get(0).contains("."));
-		if (isNumber) {
-			// convert strings into Double, add to data attributes
-			for (String raw : rawData) {
+		// convert strings into Double, add to data attributes
+		for (int i = 0; i < rawData.size(); i++) {
+			String raw = rawData.get(i);
+			// check current attribute value for String type or floating point type
+			if ((rawData.get(i).chars().allMatch(Character::isDigit) || rawData.get(i).contains("."))) {
 				//convert number strings into Doubles, or strings into unique Doubles
 				procData.add(Double.valueOf(raw));
-			}
-		} else {
-			// convert Strings into unique integers, add to data attributes
-			for (String raw : rawData) {
+			} else {
+				// convert Strings into unique integers, add to data attributes
 				procData.add((double) raw.hashCode());
 			}
+
 		}
 		Collections.sort(procData);
 
@@ -84,16 +109,38 @@ public class NaiveBayes {
 
 	public void classify(){
 		for(int numberOfRuns = 0; numberOfRuns < 10; numberOfRuns++) {
+			discretizeData();
 			for (int i = 0; i < dataContainer.getDataFold().size(); i++) {
 				if(i == testingFold){
 					continue;
 				}
 				currentFold = i;
 
-				discretizeData();
+				fillBins();
 			}
 
 			// TODO Testing
+			attribBins.clear();
+		}
+	}
+
+	private void fillBins(){
+		for(List<String> row : dataContainer.getDataFold().get(currentFold)){
+			for(int i = 0; i < row.size(); i++){
+				String raw = row.get(i);
+				Double value;
+				if(raw.chars().allMatch(Character::isDigit) || raw.contains(".")){
+					value = Double.valueOf(raw);
+				}else{
+					value = (double) raw.hashCode();
+				}
+				for(Bin bin : attribBins.get(i)){
+					if(bin.binContains(value)){
+						bin.incrementFreq();
+						break;
+					}
+				}
+			}
 		}
 	}
 }
