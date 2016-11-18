@@ -51,7 +51,7 @@ public class ID3 {
 
     public void bin(List<String> inAtt, int numBin){
         if(numBin <= 5){
-
+            List<Bin> bins = new ArrayList<>();
         } else {
             int max = findMax(inAtt);
             int min = findMin(inAtt);
@@ -61,22 +61,26 @@ public class ID3 {
             float nextDiv = lowDiv + binRange;
             List<Bin> bins = new ArrayList<>();
             binAtt.add(bins);
-            for(int i = 1; i < 7; i ++){
+            for(int i = 0; i < 6; i ++){
                 bins.add(new Bin(lowDiv, nextDiv, i));
                 lowDiv = nextDiv;
                 nextDiv = nextDiv + binRange;
             }
             for(int i = 0; i < inAtt.size(); i++){
-                String curValue = inAtt.get(i);
-                int l = curValue.length();
-                char[] chars = new char[l];
-                curValue.getChars(0, l, chars, l - 1);
+                for(int j = 0; j < bins.size(); j++){
+                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i)))){
+                        bins.get(j).incrementFreq();
+                        j = Integer.MAX_VALUE;
+                    }
+                }
             }
         }
     }
 
     public int findMax(List<String> inAtt){
         int answer = Integer.MIN_VALUE;
+        char[] chars;
+        int l;
         for(int i = 0; i < inAtt.size(); i++){
             int curNum = Integer.getInteger(inAtt.get(i));
             if(curNum > answer){
@@ -96,6 +100,13 @@ public class ID3 {
         }
         return answer;
     }
+
+    /*public void asdf(){
+        String curValue = inAtt.get(i);
+        int l = curValue.length();
+        char[] chars = new char[l];
+        curValue.getChars(0, l, chars, l - 1);
+    }*/
 
     //this is the actual recursive method to run ID3
     public void id3(){
