@@ -43,17 +43,19 @@ public class TAN {
         int correctGuess = 0;
         for (int i = 0; i < dc.getDataFold().get(testingFold).size(); i++) {
             // iterate through rows of data
-            String classGuess = "";
-            List<String> potentialClasses = new ArrayList<>();
-
+            String classGuess = "";  // store our guess from Node(class | attribute)
+            List<String> potentialClasses = new ArrayList<>(); // leaf Nodes that have high probability
+            // grab our testing data to begin testing
             List<String> row = dc.getDataFold().get(testingFold).get(i);
-
+            // for each row in the testing fold ...
             for (int j = 0; j < row.size(); j++) {
+                // grab the current attribute value
                 String curAttrib = row.get(j);
                 double highProb = 0.0;
+                //
                 for (int k = 0; k < classes.size(); k++) {
                     String classCheck = classes.get(k);
-                    double curProb = calculateProbability(classCheck, curAttrib, j);
+                    double curProb = calculateProbability(classCheck, curAttrib, k);
                     if (curProb > highProb) {
                         highProb = curProb;
                         classGuess = classCheck;
@@ -61,7 +63,7 @@ public class TAN {
                 }
                 potentialClasses.add(classGuess);
             }
-            classGuess
+            classGuess = getClassGuess(potentialClasses);
 
         }
     }
