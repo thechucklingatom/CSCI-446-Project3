@@ -248,16 +248,17 @@ public class TAN {
         List<Double> procData = new ArrayList<>();
         // are we working with numbers or actual Strings
         // convert strings into Double, add to data attributes
-        for (String raw : rawData) {
+        for (int i = 0; i < rawData.size(); i++) {
+            String raw = rawData.get(i);
             // check current attribute value for String type or floating point type
-            if ((rawData.get(0).chars().allMatch(Character::isDigit) || rawData.get(0).contains("."))) {
+            if ((rawData.get(i).chars().allMatch(Character::isDigit) || rawData.get(i).contains("."))) {
                 //convert number strings into Doubles, or strings into unique Doubles
                 procData.add(Double.valueOf(raw));
             } else {
                 // convert Strings into unique integers, add to data attributes
                 procData.add((double) raw.hashCode());
             }  // end if-else
-        }  // end for
+        }
 
         // sort data into ascending list of values
         Collections.sort(procData);
@@ -267,7 +268,7 @@ public class TAN {
             if (i == 0) {
                 // append bin with lowest possible value
                 binForThisAttr.add(new Bin(Double.MIN_VALUE, procData.get(i), i));
-                // binForThisAttr.get(binForThisAttr.size() - 1).incrementFreq();
+                // binForThisAttr.get(binForT i = 0; i hisAttr.size() - 1).incrementFreq();
             } else if (i == procData.size() - 1) {
                 // append bin with highest possible value
                 binForThisAttr.add(new Bin(procData.get(i), Double.MAX_VALUE, i));
