@@ -40,7 +40,9 @@ public class ID3 {
         int answer = 0;
         HashSet noDupes = new HashSet();
         for (int j = 0; j < inFold.size(); j++) {
-            noDupes.add(inFold.get(j));
+            if(!inFold.get(j).equals("?")) {
+                noDupes.add(inFold.get(j));
+            }
         }
         if (noDupes.size() <= 5){
             return answer;
@@ -52,6 +54,19 @@ public class ID3 {
     public void bin(List<String> inAtt, int numBin){
         if(numBin <= 5){
             List<Bin> bins = new ArrayList<>();
+            binAtt.add(bins);
+            //obtain a list of the unique values in this attribute
+            List<String> uniqueValue = new ArrayList<>();
+            List<char[]> uniqueAscii = new ArrayList<>();
+            for(int i = 0; i < inAtt.size(); i++){
+                if(!uniqueValue.contains(inAtt.get(i))){
+                    uniqueValue.add(inAtt.get(i));
+                    uniqueAscii.add(toChars(inAtt.get(i)));
+                }
+            }
+            //change each String into it's ASCII char[]
+            //
+
         } else {
             int max = findMax(inAtt);
             int min = findMin(inAtt);
@@ -68,7 +83,7 @@ public class ID3 {
             }
             for(int i = 0; i < inAtt.size(); i++){
                 for(int j = 0; j < bins.size(); j++){
-                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i)))){
+                    if(bins.get(j).binContains(Double.valueOf(inAtt.get(i))) && !bins.get(j).equals("?")){
                         bins.get(j).incrementFreq();
                         j = Integer.MAX_VALUE;
                     }
@@ -79,8 +94,6 @@ public class ID3 {
 
     public int findMax(List<String> inAtt){
         int answer = Integer.MIN_VALUE;
-        char[] chars;
-        int l;
         for(int i = 0; i < inAtt.size(); i++){
             int curNum = Integer.getInteger(inAtt.get(i));
             if(curNum > answer){
@@ -101,18 +114,20 @@ public class ID3 {
         return answer;
     }
 
-    /*public void asdf(){
-        String curValue = inAtt.get(i);
-        int l = curValue.length();
+    public char[] toChars(String inString){
+        String s = inString;
+        int l = s.length();
         char[] chars = new char[l];
-        curValue.getChars(0, l, chars, l - 1);
-    }*/
+        s.getChars(0, l, chars, l - 1);
+        return chars;
+    }
 
     //this is the actual recursive method to run ID3
     public void id3(){
 
     }
 
+    //this will be the method that mostly runs the algorithm, as it will perform our verification
     public void tenFold(){
 
     }
