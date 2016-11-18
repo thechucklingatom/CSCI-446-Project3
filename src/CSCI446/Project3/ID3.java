@@ -23,7 +23,7 @@ public class ID3 {
     public ID3(Writer inWriter, DataContainer inContainer) {
         this.writer = inWriter;
         this.container = inContainer;
-        tree = new Tree();
+        tree = new Tree(new Node());
         binAtt = new ArrayList<>();
         classTypes = container.getClassTypes();
         classification = container.getClassificationFold();
@@ -136,10 +136,25 @@ public class ID3 {
     }
 
     //this is the actual recursive method to run ID3
-    public Tree id3(List<List<Bin>> examples, List<Integer> attributes, List<List<Bin>> parentExamples, List<String> parentExClass) {
-        if(examples.size() == 0){
+    public Tree id3(List<List<String>> examples, List<String> exampleClass, List<Integer> attributes, List<List<Bin>> parentExamples, List<String> parentExClass) {
+        Tree curTree;
+        if(examples.isEmpty()){
             String maxString = pluralityValue(parentExClass);
-            Tree tree = new Tree();
+            curTree = new Tree(new Node());
+            curTree.getRoot().setData(maxString);
+            return curTree;
+        } else if(isSameClass(exampleClass)){
+            String s = exampleClass.get(0);
+            curTree = new Tree(new Node());
+            curTree.getRoot().setData(s);
+            return curTree;
+        } else if(attributes.isEmpty()){
+            String maxString = pluralityValue(exampleClass);
+            curTree = new Tree(new Node());
+            curTree.getRoot().setData(maxString);
+            return curTree;
+        } else {
+            int attributeA = bestAttribute(examples, exampleClass, attributes);
         }
         return null;
     }
@@ -168,8 +183,33 @@ public class ID3 {
         return maxString;
     }
 
-    public double entropy(List<List<Bin>> givenAttribute){
+    public boolean isSameClass(List<String> exampleClass){
+        String testS = exampleClass.get(0);
+        for(String s : exampleClass){
+            if(!s.equals(testS)){
+                return false;
+            }
+        }
+        return true;
+    }
 
+    public int bestAttribute(List<List<String>> examples, List<String> exampleClass, List<Integer> attributes){
+        //iterate through our attributes and find their gain
+        List<Double> attributeGain = new ArrayList<>();
+        for(int i : attributes){
+            //collect data on this attribute: total size, the unique classes
+
+            //find entropy
+            //find the examples where attribute i is set to x and store index into list
+            for(int j = 0; j < examples.size(); j++){ //iterate through the rows
+
+            }
+            double sum;
+            //for(int j = 0; )
+            //find remain
+            //find entropy - remain, or gain
+        }
+        return 0;
     }
 
     public void prune(Tree decisionTree){
@@ -197,8 +237,29 @@ public class ID3 {
             //call discretize sending our fold
             discretize(trainingSet);
             //then we learn
+            List<Integer> attributes = new ArrayList<>();
+            int x = 0;
+            for(List<String> n : trainingSet){
+                attributes.add(x);
+                x++;
+            }
+            container.transposeList(trainingSet);
+
+            tree = id3(trainingSet, combineClassificationFolds(i),attributes,null, null);
             //then we prune (ugh)
             //then we test (a run)
         }
+    }
+
+    public List<String> combineClassificationFolds(int i){
+        classification = container.getClassificationFold();
+        List<String> combClass = new ArrayList<>();
+        for(int j = 0; j < 10; j++){
+            for(int k = 0; k < classification.get(j).size(); k++)
+            if(j == i){} else{
+                combClass.add(classification.get(j).get(k));
+            }
+        }
+        return combClass;
     }
 }
