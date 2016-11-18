@@ -118,15 +118,15 @@ public class ID3 {
             try{
                 writer.append("     Bin made from minimum double value to " + stringHash.get(0) + "\n");
             } catch(IOException x){}
-            for (i = 0; i <= stringHash.size(); i++) {
-                Bin binToAdd = new Bin(stringHash.get(i), stringHash.get(i + 1), i);
+            for (i = 0; i < stringHash.size(); i++) {
+                Bin binToAdd = new Bin(stringHash.get(i), i+1 == stringHash.size() ? Double.MAX_VALUE : stringHash.get(i + 1), i);
                 binToAdd.setIsCont(false);
                 bins.add(binToAdd);
                 try{
                     writer.append("    Bin made from " + stringHash.get(i) + " to " + stringHash.get(i=1) + "\n");
                 } catch(IOException x){}
             }
-            bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
+            //bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
             //fill the bins
             for (int x = 0; x < inAtt.size(); x++) {
                 for (int j = 0; j < bins.size(); j++) {
