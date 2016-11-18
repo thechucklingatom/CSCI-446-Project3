@@ -1,5 +1,6 @@
 package CSCI446.Project3;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,14 +10,14 @@ import java.util.List;
  * @author thechucklingatom
  */
 public class NaiveBayes {
-	private Writer writer;
+	private Writer fileOutput;
 	private DataContainer dataContainer;
 	private int testingFold;
 	private int currentFold;
 	private List<List<Bin>> attribBins;
 
-	public NaiveBayes(Writer writer, DataContainer dataContainer){
-		this.writer = writer;
+	public NaiveBayes(Writer fileOutput, DataContainer dataContainer){
+		this.fileOutput = fileOutput;
 		this.dataContainer = dataContainer;
 		testingFold = 9;
 		attribBins = new ArrayList<>();
@@ -40,14 +41,79 @@ public class NaiveBayes {
 		return classCount / totalNumberOfClasses;
 	}
 
-	private double getAttributeProbability(String attribute){
-		return 0;
+	private double getAttributeProbability(String attribute, int attributeIndex){
+
+		Double value;
+		if(attribute.chars().allMatch(Character::isDigit) || attribute.contains(".")){
+			value = Double.valueOf(attribute);
+		}else{
+			value = (double) attribute.hashCode();
+		}
+		double totalSelectedAttribute = 0;
+		for(Bin bin : attribBins.get(attributeIndex)){
+			if(bin.binContains(value)){
+				totalSelectedAttribute = bin.getFreq();
+				break;
+			}
+		}
+
+		int totalAttributes = 0;
+		for(int i = 0; i < dataContainer.getDataFold().size(); i++){
+			if(i == testingFold){
+				continue;
+			}else{
+				totalAttributes += dataContainer.getDataFold().get(i).size();
+			}
+		}
+
+		return totalSelectedAttribute / totalAttributes;
 	}
 
-	public double calculateProbability(String classType, String attribute){
+	private double getProbabilityOfAttributeGivenClass(String attribute, int attributeIndex,
+			String classType){
+		int totalSelectedAttribute = 0;
+		double totalGivenClass = 0;
+		for(int i = 0; i < dataContainer.getClassificationFold().size(); i++){
+			if(i == testingFold){
+				continue;
+			}
+			for(int j = 0; i < dataContainer.getClassificationFold().get(i).size(); i++){
+				if(dataContainer.getClassificationFold().get(i).get(j).equals(classType)){
+					totalGivenClass++;
+					double value;
+					if(attribute.chars().allMatch(Character::isDigit) || attribute.contains(".")){
+						value = Double.valueOf(attribute);
+					}else{
+						value = (double) attribute.hashCode();
+					}
+
+					double classValue;
+					if(dataContainer.getDataFold().get(i).get(j).get(attributeIndex).chars().allMatch(Character::isDigit)
+							|| dataContainer.getDataFold().get(i).get(j).get(attributeIndex).contains(".")){
+						classValue = Double.valueOf(attribute);
+					}else{
+						classValue = (double) attribute.hashCode();
+					}
+
+					for(Bin bin : attribBins.get(attributeIndex)){
+						if(bin.binContains(value) && bin.binContains(classValue)){
+							totalSelectedAttribute++;
+							break;
+						}
+					}
+					break;
+				}
+			}
+		}
+
+		return totalSelectedAttribute / totalGivenClass;
+	}
+
+	public double calculateProbability(String classType, String attribute, int attributeIndex){
 		double probabilityOfClass = 1, probabilityOfAttribute = 1, probabilityOfAttributeGivenClass = 1;
 
 		probabilityOfClass = getClassProbability(classType);
+		probabilityOfAttribute = getAttributeProbability(attribute, attributeIndex);
 
 		return probabilityOfClass * probabilityOfAttributeGivenClass / probabilityOfAttribute;
 	}
@@ -108,6 +174,13 @@ public class NaiveBayes {
 	}
 
 	public void classify(){
+		try {
+			fileOutput.append("NaiveBayes classification");
+			fileOutput.append("\n");
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			System.out.println("error printing in classify");
+		}
 		for(int numberOfRuns = 0; numberOfRuns < 10; numberOfRuns++) {
 			discretizeData();
 			for (int i = 0; i < dataContainer.getDataFold().size(); i++) {
@@ -121,6 +194,7 @@ public class NaiveBayes {
 
 			// TODO Testing
 			attribBins.clear();
+			testingFold--;
 		}
 	}
 
