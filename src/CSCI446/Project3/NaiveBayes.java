@@ -21,6 +21,7 @@ public class NaiveBayes {
 		this.dataContainer = dataContainer;
 		testingFold = 9;
 		attribBins = new ArrayList<>();
+		currentFold = 0;
 	}
 
 	private double getClassProbability(String classType){
@@ -192,7 +193,7 @@ public class NaiveBayes {
 				fillBins();
 			}
 
-			// TODO Testing
+			test();
 			attribBins.clear();
 			testingFold--;
 		}
@@ -216,5 +217,32 @@ public class NaiveBayes {
 				}
 			}
 		}
+	}
+
+	private void test(){
+		int correctGuess = 0;
+		for(int i = 0; i < dataContainer.getDataFold().get(testingFold).size(); i++){
+			String classGuess = "";
+			double probability = 1;
+			double guessProbability = 0;
+			for(String potentialClass : dataContainer.getClassTypes()) {
+				for (int j = 0; j < dataContainer.getDataFold().get(testingFold).get(i).size(); j++) {
+					probability *= calculateProbability(potentialClass,
+							dataContainer.getDataFold().get(testingFold).get(i).get(j),
+							j);
+				}
+
+				if(probability > guessProbability){
+					classGuess = potentialClass;
+				}
+			}
+
+			if(classGuess.equals(dataContainer.getClassificationFold().get(testingFold).get(i))){
+				System.out.println("Success");
+				correctGuess++;
+			}
+		}
+
+		System.out.println("Percent classified correctly " + ((double)(correctGuess) / dataContainer.getDataFold().get(testingFold).size()));
 	}
 }
