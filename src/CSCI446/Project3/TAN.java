@@ -32,6 +32,13 @@ public class TAN {
      */
     public void trainData() {
         buildPriors();
+        // reset current fold to generate bin
+        currentFold = 0;
+        discretizeData();
+    }
+
+    public void fillBins() {
+
     }
 
     /**
