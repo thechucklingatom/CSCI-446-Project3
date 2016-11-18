@@ -39,51 +39,35 @@ public class TAN {
     }
 
     public void fillBins() {
-        // skip 0 fold since it generated the bins
-        for (int i = 1; i < 10; i++) {
-            if (i == testingFold) {
-                continue;
-            } else {
-                currentFold = i;
-            }
+        List<List<String>> currentData = dc.getDataFold().get(currentFold);
+        List<List<String>> tranData = dc.transposeList(currentData);
 
-            List<List<String>> currentData = dc.getDataFold().get(currentFold);
-            List<List<String>> tranData = dc.transposeList(currentData);
+        for (int row = 0; row < tranData.size(); row++) {
+            // for each row of attribute values, discretive it
+            List<Double> procData = new ArrayList<>();
 
-            for (int row = 0; row < tranData.size(); row++) {
-
-            }
-        }
-    }
-
-    /**
-     * Converts continuous values for attributes into discreet values
-     */
-    private void discretizeData() {
-        boolean generatedBins = false;
-        for (int i = 0; i < 10; i++) {
-            if (i == testingFold) {
-                continue;
-            } else {
-                currentFold = i;
-                List<List<String>> currentData = dc.getDataFold().get(currentFold);
-                List<List<String>> tranData = dc.transposeList(currentData);
-
-                if (generatedBins == false) {
-                    for (int row = 0; row < tranData.size(); row++) {
-                        attribBins.add(discretizeRow(tranData.get(row)));
-                    }
+            for (String rawData : tranData.get(row)) {
+                if (rawData.chars().allMatch(Character::isDigit) || rawData.contains(".")) {
+                    procData.add(Double.parseDouble(rawData));
                 } else {
-                    // fill bins with data now
+                    procData.add((double) rawData.hashCode());
                 }
+            }
 
+            for (double value : procData) {
+                for (Bin bin : attribBins.get(row)) {
+                    if (bin.binContains(value)) {
+                        bin.incrementFreq();
+                    }
+                }
             }
         }
-
     }
+
 
     /**
      * Converts attribute Strings into Bins for classifying attributes
+     *
      * @param rawData List of String data for attribute values
      * @return List of Bin that summarize the attribute value parameter
      */
@@ -122,6 +106,33 @@ public class TAN {
         }
         return binForThisAttr;
     }
+
+    /**
+     * Converts continuous values for attributes into discreet values
+     */
+    private void discretizeData() {
+        boolean generatedBins = false;
+        for (int i = 0; i < 10; i++) {
+            if (i == testingFold) {
+                continue;
+            } else {
+                currentFold = i;
+                List<List<String>> currentData = dc.getDataFold().get(currentFold);
+                List<List<String>> tranData = dc.transposeList(currentData);
+
+                if (generatedBins == false) {
+                    for (int row = 0; row < tranData.size(); row++) {
+                        attribBins.add(discretizeRow(tranData.get(row)));
+                    }
+                } else {
+                    // fill bins with data now
+                }
+
+            }
+        }
+
+    }
+
 
     /**
      * Generates the Prior probabilities of a given class
