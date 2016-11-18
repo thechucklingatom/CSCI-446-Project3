@@ -11,7 +11,6 @@ import java.util.Collections;
 public class TAN {
 
     private double[] classPriors;   // match a probability for a class in classes var
-    private int documentedFold; // the nth fold we choose to log our decisions
     private int currentFold;    // used to grab fold that we are looking at currently
     private int testingFold;
     private List<String> classes;
@@ -31,26 +30,56 @@ public class TAN {
      * Trains the TAN on the data for everything except the testing
      */
     public void trainData() {
-        buildPriors();
-        // reset current fold to generate bin
-        currentFold = 0;
-        discretizeData();
+        for (int i = 0; i < 10; i++) {
+            testingFold = i;
+            buildPriors();
+            discretizeData();
+        }
+
     }
 
     public void fillBins() {
+        // skip 0 fold since it generated the bins
+        for (int i = 1; i < 10; i++) {
+            if (i == testingFold) {
+                continue;
+            } else {
+                currentFold = i;
+            }
 
+            List<List<String>> currentData = dc.getDataFold().get(currentFold);
+            List<List<String>> tranData = dc.transposeList(currentData);
+
+            for (int row = 0; row < tranData.size(); row++) {
+
+            }
+        }
     }
 
     /**
      * Converts continuous values for attributes into discreet values
      */
     private void discretizeData() {
-        List<List<String>> currentData = dc.getDataFold().get(currentFold);
-        List<List<String>> tranData = dc.transposeList(currentData);
+        boolean generatedBins = false;
+        for (int i = 0; i < 10; i++) {
+            if (i == testingFold) {
+                continue;
+            } else {
+                currentFold = i;
+                List<List<String>> currentData = dc.getDataFold().get(currentFold);
+                List<List<String>> tranData = dc.transposeList(currentData);
 
-        for (int row = 0; row < tranData.size(); row++) {
-            attribBins.add(discretizeRow(tranData.get(row)));
+                if (generatedBins == false) {
+                    for (int row = 0; row < tranData.size(); row++) {
+                        attribBins.add(discretizeRow(tranData.get(row)));
+                    }
+                } else {
+                    // fill bins with data now
+                }
+
+            }
         }
+
     }
 
     /**
