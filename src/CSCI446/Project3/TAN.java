@@ -31,15 +31,7 @@ public class TAN {
      * Trains the TAN on the data for everything except the testing
      */
     public void trainData() {
-        for (int i = 0; i < 10; i++) {
-            if (i == testingFold) {
-                continue;
-            } else {
-                currentFold = i;
-                buildPriors();
-                discretizeData();
-            }
-        }
+        buildPriors();
     }
 
     /**
@@ -47,7 +39,7 @@ public class TAN {
      */
     private void discretizeData() {
         List<List<String>> currentData = dc.getDataFold().get(currentFold);
-        List<List<String>> tranData = dc.transposeList(currentData); // rows of attrib
+        List<List<String>> tranData = dc.transposeList(currentData);
 
         for (int row = 0; row < tranData.size(); row++) {
             attribBins.add(discretizeRow(tranData.get(row)));
