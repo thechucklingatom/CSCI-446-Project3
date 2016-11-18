@@ -80,7 +80,15 @@ public class TAN {
     public void buildPriors() {
         int totalClasses = 0;
         int[] totalClassOccurence;
-        dc.getClassification();
+        List<String> classList = dc.getClassification();
+        List<String> classes = dc.getClassTypes();
+
+        for (String className : classList) {
+            for (int i = 0; i < classes.size(); i++) {
+
+            }
+        }
+
     }
 
 }
