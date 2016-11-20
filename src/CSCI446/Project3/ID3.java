@@ -113,15 +113,23 @@ public class ID3 {
                 writer.append("     Bin made from minimum double value to " + stringHash.get(0) + "\n");
             } catch(IOException x){}
             for (i = 0; i <= stringHash.size(); i++) {
+                //iterate through our hash and create a bin that spans from the current hash
+                //number to the next has number
                 Bin binToAdd = new Bin(stringHash.get(i), stringHash.get(i + 1), i);
+                //to keep track of which attributes had continuous values, set the bin to false in this if()
                 binToAdd.setIsCont(false);
+                //add this new bin to the list of the bins that represent this attribute
                 bins.add(binToAdd);
                 try{
                     writer.append("    Bin made from " + stringHash.get(i) + " to " + stringHash.get(i=1) + "\n");
                 } catch(IOException x){}
             }
+            //add a last bin to catch the values that are greater than what is in the training set
             bins.add(new Bin(stringHash.get(i), Double.MAX_VALUE, i));
-            //fill the bins
+            try{
+                writer.append("     Bin made from " + stringHash.get(i) + " to the maximum double value\n");
+            } catch(IOException x){}
+            //fill the bins to make a sort of histogram UNUSED
             for (int x = 0; x < inAtt.size(); x++) {
                 for (int j = 0; j < bins.size(); j++) {
                     if (bins.get(j).binContains((double) inAtt.get(x).hashCode()) && !inAtt.get(j).equals("?")) {
@@ -134,6 +142,9 @@ public class ID3 {
             int max = findMax(inAtt);
             int min = findMin(inAtt);
             int range = max - min;
+            try{
+                writer.append("     This attribute has max " + max + " and min " + min + " and range " + range + "\n");
+            } catch(IOException x){}
             float binRange = range / MAX_NUM_BINS;
             float lowDiv = min;
             float nextDiv = lowDiv + binRange;
