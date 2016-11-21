@@ -50,12 +50,17 @@ public class Main {
 				DataContainer container = new DataContainer();
 				container.populateData(fileNameList.get(i), classificationLocationList.get(i));
 
-				kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
+				//kNearestNeighbor kNearestNeighbor = new kNearestNeighbor(fileWriter, container);
 
-				kNearestNeighbor.classify();
+				//kNearestNeighbor.classify();
 
-				NaiveBayes naiveBayes = new NaiveBayes(fileWriter, container);
-				naiveBayes.classify();
+				//NaiveBayes naiveBayes = new NaiveBayes(fileWriter, container);
+				//naiveBayes.classify();
+
+				//TAN tan = new TAN(container, fileWriter);
+
+				ID3 id3 = new ID3(fileWriter, container);
+				id3.tenFold();
 			}
 		} catch (IOException ex) {
 			ex.printStackTrace();
