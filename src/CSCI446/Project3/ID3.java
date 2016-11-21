@@ -37,10 +37,6 @@ public class ID3 {
 	//takes in a transposed training set (to make rows  attributes) and bin it
 	public void discretize(List<List<String>> inFold) {
 		//iterating through the attributes
-		try {
-			writer.append("ID3 Discretizing...\n");
-		} catch (IOException x) {
-		}
 		for (int i = 0; i < inFold.size(); i++) {
 			//we are going to determine the size of unique data of each attribute,
 			//and bin the attributes with a max of 5 unique data
@@ -152,7 +148,7 @@ public class ID3 {
 			for (int j = 0; j < bins.size(); j++) {
 				if (inAtt.get(i) != -10 && bins.get(j).getBinID() == inAtt.get(i)) {
 					bins.get(j).incrementFreq();
-					continue;
+					break;
 				}
 			}
 		}
@@ -362,10 +358,10 @@ public class ID3 {
 			//find entropy - remain, or gain
 		} //we now have the gain of each attribute
 		int minIndex = 0;
-		double minNum = Double.MAX_VALUE;
+		double minNum = Double.MIN_VALUE;
 		for (int i = 0; i < attributeGain.size(); i++) {
 
-			if (minNum > attributeGain.get(i)) {
+			if (minNum < attributeGain.get(i)) {
 				minNum = attributeGain.get(i);
 				minIndex = i;
 			}
@@ -411,7 +407,7 @@ public class ID3 {
 			tree = id3(binMap, classCol, attributes, null);
 			//then we prune
 			//then we test (a run)
-			test(allFolds.get(i), tree);
+			test(allFolds.get(i), container.getClassificationFold().get(i), tree);
 		}
 	}
 
@@ -460,11 +456,50 @@ public class ID3 {
 	}
 
 	//important to note that inFold is a list of rows, not a list of columns
-	public void test(List<List<String>> inFold, Tree decisionTree){
-		boolean done = false;
-		while(!done) {
-			int attNum = Integer.getInteger(decisionTree.getRoot().getData());
-			List<Bin> branches = decisionTree
+	public void test(List<List<String>> inFold, List<String> classFold, Tree decisionTree) {
+		int correct = 0;
+		int fail = 0;
+		for (int i = 0; i < inFold.size(); i++) { //iterate through the rows
+			boolean done = false;
+			String predicted = "";
+			while (!done) { //test one row
+				if(decisionTree.getRoot().isClass()) {
+					done = true;
+					predicted = decisionTree.getRoot().getData();
+
+				} else {
+					int attNum = Integer.valueOf(decisionTree.getRoot().getData()); //grab the att number of the current subtree's root
+					String s = inFold.get(i).get(attNum); //grab the data in that attribute for this row
+					boolean isCont = decisionTree.getIdBranches().get(0).isCont();
+					if (isCont) { //iterate through the bins and find which one
+						double value = Double.valueOf(s);
+						for (int j = 0; j < decisionTree.getIdBranches().size(); j++) {
+							Bin b = decisionTree.getIdBranches().get(j);
+							if (b.binContains(value)) {
+								decisionTree = decisionTree.getSubtrees().get(j);
+								break;
+							}
+						}
+					} else {
+						double hash = (double) s.hashCode();
+						for (int j = 0; j < decisionTree.getIdBranches().size(); j++) {
+							Bin b = decisionTree.getIdBranches().get(j);
+							if (b.binContains(hash)) {
+								decisionTree = decisionTree.getSubtrees().get(j);
+								break;
+							}
+						}
+					}
+				}
+			} if(predicted.equals(classFold.get(i))){
+				correct++;
+			} else {
+				fail++;
+			}
 		}
+		double percentage =(double) correct / (double) (correct + fail);
+		try{
+			writer.append(Double.toString(percentage) + "\n");
+		} catch(IOException x){}
 	}
 }
